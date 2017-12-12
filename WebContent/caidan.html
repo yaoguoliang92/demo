@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+//delete before and end 
+/* 空格开头或者空格结尾
+^是开始
+\s是空白
+*表示0个或多个
+|是或者
+$是结尾
+g表示全局 */
+function trim(s){
+  return s.replace(/(^\s*)|(\s*$)/g, "");
+}
+var str = "   a   ";
+if(str[0]==" "){
+	console.log("等于");
+}
+console.log(str[0]);
+console.log("======华丽的分割线======");
+//菜单
+var json = [
+            {"name":"cunstome","age":"20"},
+            {"name":"online","age":"22"},
+            {"name":"business","age":"24"},
+            {"name":"web","age":"25"}
+           ];
+function a(json){
+	for(var key in json){
+		console.log(json[key].age);
+	}
+}           
+a(json);
+
+//typeof 返回 object number function boolean undefine
+</script>
+</head>
+<body>
+
+</body>
+</html>

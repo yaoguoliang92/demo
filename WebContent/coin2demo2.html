@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jquery.js" ></script>
+<style>
+.one{
+/*     border-color: rgba(46, 50, 56, 0.6);
+	background-color:#000000;
+	
+    margin: 0 auto;
+    clip: rect(0,4.5rem,9rem,0);
+    margin-left: -4.5rem;
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    left: 50%;
+    border: 1.5rem solid #e7a060;
+    border-radius: 50%;
+    margin-top: 1.5rem;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg); */
+    position:absolute;
+    width:90px;
+	height: 90px;
+	border-radius:50%;
+	border:1px solid #adadad;
+	background:#f0f0f0;
+	border: 10px solid #e7a060;
+	clip: rect(0,110px,50px,0); 
+	transform:rotate(270deg);
+}
+.out{
+	width:500px;
+	height:500px;
+	background-color: #f0f0f0;
+}
+</style>
+</head>
+<body>
+<div class="out">
+	<div class="one"></div>
+</div>
+<button>开始</button>
+<button>停止</button>
+</body>
+<script>
+ window.onload=function(){
+    var div=document.getElementsByClassName("one")[0];
+    var divjq = $(".one").eq(0);
+    console.log(div);
+    setCss3(divjq,{transform:"rotate(10deg)","transform-origin":"50% 50%"})
+    var angel=0;
+/*     setInterval(function(){
+        angel+=8;
+        if(angel>8000){
+        	angel=8;
+        }
+        setCss3(divjq,{transform:"rotate("+angel+"deg)","transform-origin":"50% 50%"})
+    },30) */
+    
+  //  setInterval(start,30);
+    function start(){
+    	angel+=8;
+        if(angel>8000){
+        	angel=4;
+        }
+        setCss3(divjq,{transform:"rotate("+angel+"deg)","transform-origin":"50% 50%"});
+    }
+    function setCss3(obj,objAttr){
+        for(var i in objAttr){
+            var newi=i;
+            //判断是否存在transform-origin这样格式的属性
+            if(newi.indexOf("-")>0){
+                var num=newi.indexOf("-");
+                newi=newi.replace(newi.substr(num,2),newi.substr(num+1,1).toUpperCase());
+            }
+            //考虑到css3的兼容性问题,所以这些属性都必须加前缀才行
+            obj.css(newi,objAttr[i]);
+            newi=newi.replace(newi.charAt(0),newi.charAt(0).toUpperCase());
+            obj.css(newi,objAttr[i]);
+            console.log(newi);
+            console.log(objAttr[i]);
+        }
+    }
+    $("button").eq(0).click(function(){
+		interval= setInterval(start,30);
+	});
+    
+    $("button").eq(1).click(function(){
+    	window.clearInterval(interval);
+    })
+}  
+</script>
+</html>

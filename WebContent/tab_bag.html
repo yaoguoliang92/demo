@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jquery.js" ></script>
+</head>
+<style>
+*{
+padding:0;
+margin:0;
+}
+.tab_bag{
+	top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 19891014;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.3;
+}
+.test_div{
+	position:fixed;
+	width:200px;
+	height:100px;
+	transition:box-shadow 0.2s;
+	box-sizing:border-box;
+	padding:3px;
+	background-color: #f0f0f0;
+	left:50%;
+	margin-left:-100px;
+	margin-top:-50px;
+	z-index:111;
+	display:none;
+	top:40%;
+}
+.center_div{
+	position:absolute;
+	widht:5px;
+	height:5px;
+	background-color: #000000;
+	left:50%;
+	top:50%;
+}
+</style>
+<body>
+<div class="bg_div"></div>
+<div class="test_div"></div>
+<div class="center_div">1</div>
+<button>show bg</button>
+<button>show div</button>
+</body>
+<script>
+$(function(){
+	
+})
+/* $("button").click(function(){
+	$(".bg_div").addClass("tab_bag");
+}); */
+$("button").eq(0).click(function(){
+	showbg();
+});
+function showbg(){
+	$(".bg_div").addClass("tab_bag");
+}
+
+function popo_show(class_name){
+	$("."+class_name).show(500);
+	var topnum = ($(window).height()-$("."+class_name).height())/2;
+//	$("."+class_name).css('top',topnum+"px");
+}
+function popo_hide(class_name){
+	$("."+class_name).hide(500);
+}
+$("button").eq(1).click(function(){
+	if($(".test_div").css("display")=="none"){
+		popo_show("test_div");
+	}else{
+		popo_hide("test_div");
+	}
+	
+});
+</script>
+</html>

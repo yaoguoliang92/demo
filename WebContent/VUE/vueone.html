@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue </title>
+<script src="vue.min.js"></script>
+<script src="../jquery.js"></script>
+</head>
+<body>
+<div id="app">
+<ul>
+  <li v-on:click="say('hi',event)" v-for="(task,index) in jsonstr">
+       {{ task.name}}|{{task.age}} | {{ index }} 
+  </li>
+</ul>
+  
+<ul>
+  <li v-for="(task,index) in jsonstr" @click="clickcourse($event)">
+       {{ task.name}}|{{task.age}} | {{ index }} 
+  </li>
+</ul>
+</div>
+<script>
+var jsonstr = [{"name":"lisi","age":13},{"name":"zhangsan","age":20}];
+new Vue({
+  el: '#app',
+  data: {
+    message: jsonstr
+  },
+  methods: {
+	  say:function(a,event){
+		  var toggle = event.currentTarget;
+		  alert(toggle.innerHTML);
+	  },
+	  clickcourse:function(event){
+		  var toggle = event.currentTarget;
+		  console.dir(toggle.innerHTML);
+	  }
+  }
+})
+
+/* function say(a){
+	alert(this.innerHTML);
+} */
+</script>
+</body>
+</html>

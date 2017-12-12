@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jquery.js" ></script>
+</head>
+<style>
+*{
+padding:0;
+margin:0;
+}
+div{
+	background-color: #f8f8f8;
+}
+</style>
+<body>
+<div>he</div>
+</body>
+<script>
+$(function(){
+	window.onresize = function(){
+		var s = $("div").height();
+		console.log(s);
+		var h = $(window).height();
+		console.log(h);
+		$("div").height(h-20);
+	}
+})
+</script>
+</html>
