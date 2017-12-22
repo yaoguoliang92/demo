@@ -33,7 +33,7 @@
 }
 .out{
 	width:500px;
-	height:500px;
+	height:100px;
 	background-color: #f0f0f0;
 }
 </style>
@@ -52,15 +52,7 @@
     console.log(div);
     setCss3(divjq,{transform:"rotate(10deg)","transform-origin":"50% 50%"})
     var angel=0;
-/*     setInterval(function(){
-        angel+=8;
-        if(angel>8000){
-        	angel=8;
-        }
-        setCss3(divjq,{transform:"rotate("+angel+"deg)","transform-origin":"50% 50%"})
-    },30) */
-    
-  //  setInterval(start,30);
+
     function start(){
     	angel+=8;
         if(angel>8000){
@@ -80,16 +72,23 @@
             obj.css(newi,objAttr[i]);
             newi=newi.replace(newi.charAt(0),newi.charAt(0).toUpperCase());
             obj.css(newi,objAttr[i]);
-            console.log(newi);
-            console.log(objAttr[i]);
+            //console.log(newi);
+            //console.log(objAttr[i]);
         }
     }
+    
+    var interval;
     $("button").eq(0).click(function(){
-		interval= setInterval(start,30);
+    	console.log(interval);
+    	if(!interval){
+    		interval= setInterval(start,30);
+    	}
+		
 	});
     
     $("button").eq(1).click(function(){
     	window.clearInterval(interval);
+    	interval=0;
     })
 }  
 </script>
