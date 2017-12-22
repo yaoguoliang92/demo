@@ -28,7 +28,7 @@
 	border:1px solid #adadad;
 	background:#f0f0f0;
 	border: 10px solid #e7a060;
-	clip: rect(0,110px,50px,0); 
+	clip: rect(0,110px,52px,0); 
 	transform:rotate(270deg);
 }
 .out{
@@ -39,6 +39,7 @@
 </style>
 </head>
 <body>
+<!-- clip的顺序是上右下左 -->
 <div class="out">
 	<div class="one"></div>
 </div>
@@ -46,50 +47,83 @@
 <button>停止</button>
 </body>
 <script>
- window.onload=function(){
-    var div=document.getElementsByClassName("one")[0];
-    var divjq = $(".one").eq(0);
-    console.log(div);
-    setCss3(divjq,{transform:"rotate(10deg)","transform-origin":"50% 50%"})
-    var angel=0;
+var interval;
+var div=document.getElementsByClassName("one")[0];
+var divjq = $(".one").eq(0);
+console.log(div);
+setCss3(divjq,{transform:"rotate(0deg)","transform-origin":"50% 50%"})
+var angel=0;
+var numRandom;
 
-    function start(){
+function start(){
+	console.log(angel);
+	if(numRandom>=5){
+		var angelSum = 620;
+		if(angel<=580){
+			angel+=18; 
+		}
+		else if(angel>580){
+			angel+=2;
+		} 
+	}else{
+		if(angel<=400){
+			angel+=18; 
+		}
+		else if(angel>400){
+			angel+=2;
+		} 
+		var angelSum = 440;
+	}
+    if(angel>angelSum){
+    	stopFunc();
     	angel+=8;
-        if(angel>8000){
-        	angel=4;
-        }
-        setCss3(divjq,{transform:"rotate("+angel+"deg)","transform-origin":"50% 50%"});
     }
-    function setCss3(obj,objAttr){
-        for(var i in objAttr){
-            var newi=i;
-            //判断是否存在transform-origin这样格式的属性
-            if(newi.indexOf("-")>0){
-                var num=newi.indexOf("-");
-                newi=newi.replace(newi.substr(num,2),newi.substr(num+1,1).toUpperCase());
-            }
-            //考虑到css3的兼容性问题,所以这些属性都必须加前缀才行
-            obj.css(newi,objAttr[i]);
-            newi=newi.replace(newi.charAt(0),newi.charAt(0).toUpperCase());
-            obj.css(newi,objAttr[i]);
-            //console.log(newi);
-            //console.log(objAttr[i]);
+    setCss3(divjq,{transform:"rotate("+angel+"deg)","transform-origin":"50% 50%"});
+}
+function setCss3(obj,objAttr){
+    for(var i in objAttr){
+        var newi=i;
+        //判断是否存在transform-origin这样格式的属性
+        if(newi.indexOf("-")>0){
+            var num=newi.indexOf("-");
+            newi=newi.replace(newi.substr(num,2),newi.substr(num+1,1).toUpperCase());
         }
+        //考虑到css3的兼容性问题,所以这些属性都必须加前缀才行
+        obj.css(newi,objAttr[i]);
+        newi=newi.replace(newi.charAt(0),newi.charAt(0).toUpperCase());
+        obj.css(newi,objAttr[i]);
+        //console.log(newi);
+        //console.log(objAttr[i]);
     }
-    
-    var interval;
-    $("button").eq(0).click(function(){
-    	console.log(interval);
-    	if(!interval){
-    		interval= setInterval(start,30);
-    	}
-		
-	});
-    
-    $("button").eq(1).click(function(){
-    	window.clearInterval(interval);
-    	interval=0;
-    })
+}
+
+  
+$("button").eq(0).click(function(){
+	console.log(interval);
+	if(!interval){
+		startFunc();
+	}
+});
+   
+$("button").eq(1).click(function(){
+	stopFunc()
+})
+   
+function startFunc() {
+	angel=0;
+	numRandom=getRandom();
+	interval=setInterval(start,30);
+	return interval;
+}
+function stopFunc() {
+	window.clearInterval(interval);
+	interval=0;
 }  
+
+function getRandom(){
+	var num = Math.random();
+	return parseInt(num*10);
+}
+
 </script>
 </html>
