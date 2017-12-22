@@ -28,7 +28,7 @@
 	border:1px solid #adadad;
 	background:#f0f0f0;
 	border: 10px solid #e7a060;
-	clip: rect(0,110px,52px,0); 
+	clip: rect(0,110px,55px,0); 
 	transform:rotate(270deg);
 }
 .out{
@@ -58,21 +58,21 @@ var numRandom;
 function start(){
 	console.log(angel);
 	if(numRandom>=5){
-		var angelSum = 620;
-		if(angel<=580){
+		var angelSum = 980;//620
+		if(angel<=940){//580
 			angel+=18; 
 		}
-		else if(angel>580){
+		else if(angel>940){//580
 			angel+=2;
 		} 
 	}else{
-		if(angel<=400){
+		if(angel<=760){//400
 			angel+=18; 
 		}
-		else if(angel>400){
+		else if(angel>760){//400
 			angel+=2;
 		} 
-		var angelSum = 440;
+		var angelSum = 800;//440
 	}
     if(angel>angelSum){
     	stopFunc();
