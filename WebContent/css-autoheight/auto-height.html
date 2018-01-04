@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>auto-height</title>
+<script type="text/javascript" src="../jquery.js"></script>
+<style>
+.left{
+	position:absolute;
+	width:130px;
+	left:0px;
+	top:0px;
+	bottom:0px;
+	background: #f0f0f0;
+	padding:16px 0px;
+}
+.left-wap{
+	border:2px solid #a6afbc;
+	border-radius:3px;
+}
+.right{
+	position:absolute;
+	left:134px;
+	top:0px;
+	bottom:0px;
+	right:0px;
+	background-color: #f0f0f0;
+	padding:16px;
+}
+.wrapper{
+	border:2px solid #a6afbc;
+	border-radius:3px;
+}
+
+</style>
+</head>
+<body>
+	<div class="left">
+		<div class="left-wap">
+			
+		</div>
+	</div>
+	<div class="right">
+		<div class="wrapper">
+			
+		</div>
+	</div>
+</body>
+<script>
+$(function(){
+	autoHeight();
+	window.onresize = function(){
+		autoHeight();
+	}
+})
+
+function autoHeight(){
+	var wh = $(window).height();
+	$(".wrapper").height(wh-36);
+	$(".left-wap").height(wh-36);
+}
+</script>
+</html>
