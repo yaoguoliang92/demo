@@ -25,7 +25,6 @@
     width:90px;
 	height: 90px;
 	border-radius:50%;
-	border:1px solid #adadad;
 	background:#f0f0f0;
 	border: 10px solid #e7a060;
 	clip: rect(0,110px,55px,0); 
@@ -36,12 +35,26 @@
 	height:100px;
 	background-color: #f0f0f0;
 }
+.two{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #000000;
+    border: 10px solid #000000;
+    clip: rect(0,97px,45px,0);
+    transform: rotate(180deg);
+    left: 18px;
+    top: 18px;
+}
+}
 </style>
 </head>
 <body>
 <!-- clip的顺序是上右下左 -->
 <div class="out">
 	<div class="one"></div>
+	<div class="two"></div>
 </div>
 <button>开始</button>
 <button>停止</button>
@@ -50,34 +63,60 @@
 var interval;
 var div=document.getElementsByClassName("one")[0];
 var divjq = $(".one").eq(0);
+var divtwo = $(".two");
 console.log(div);
 setCss3(divjq,{transform:"rotate(0deg)","transform-origin":"50% 50%"})
+setCss3(divtwo,{transform:"rotate(180deg)","transform-origin":"50% 50%"})
 var angel=0;
 var numRandom;
+var angelTwo=0;
+
 
 function start(){
 	console.log(angel);
 	if(numRandom>=5){
+		//one
 		var angelSum = 980;//620
 		if(angel<=940){//580
-			angel+=18; 
+			angel+=20; 
 		}
 		else if(angel>940){//580
 			angel+=2;
 		} 
+		//one
+		//xin
+		var twoSum = (-980 -180);
+		if(angelTwo>=(-940 -180)){
+			angelTwo-=10;
+		}else if(angelTwo<(-940-180)){
+			angelTwo-=1;
+		}
+		//xin
 	}else{
+		var angelSum = 800;//440
 		if(angel<=760){//400
 			angel+=18; 
 		}
 		else if(angel>760){//400
 			angel+=2;
 		} 
-		var angelSum = 800;//440
+		
+		//xin
+		var twoSum = (-800-180);
+		if(angelTwo>=(-780-180)){
+			angelTwo-=10;
+		}else if(angelTwo<(-780-180)){
+			angelTwo-=1;
+		}
+		//xin
 	}
     if(angel>angelSum){
     	stopFunc();
-    	angel+=8;
+    	/* angel+=8;
+    	angelTwo-=12; */
+    	
     }
+    setCss3(divtwo,{transform:"rotate("+angelTwo+"deg)","transform-origin":"50% 50%"});
     setCss3(divjq,{transform:"rotate("+angel+"deg)","transform-origin":"50% 50%"});
 }
 function setCss3(obj,objAttr){
@@ -111,6 +150,7 @@ $("button").eq(1).click(function(){
    
 function startFunc() {
 	angel=0;
+	angelTwo=0;
 	numRandom=getRandom();
 	interval=setInterval(start,30);
 	return interval;
