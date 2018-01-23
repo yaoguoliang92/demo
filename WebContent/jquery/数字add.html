@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>https://www.cnblogs.com/huanghuali/p/6733340.html</title>
+   <script src="http://img.jb51.net/jslib/jquery/jquery14.js" type="text/javascript"></script> 
+</head>
+<body>
+ 
+    <p>初始值是0，点击按钮让其增加到10然后停止</p>
+    <span>0</span>
+    <button>开始</button>
+ 
+    <script>
+        $(function(){
+ 
+            $("button").click(function(event) {
+                var num = 0;
+                // 调用计时函数
+                var t = setTimeout(timedCount(num),1000);
+                $("button").attr('disabled','disabled');   
+            });
+             
+            // 循环计时函数, 多次调用自身函数, num为被传递的参数
+            function timedCount(num){
+                num++;
+                $("span").text(num);
+                // 设置条件使停止计时
+                if (num<10) {
+                    var t = setTimeout(function(){timedCount(num)},1000);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
