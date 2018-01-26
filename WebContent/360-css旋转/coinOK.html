@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>(runoob.com)</title> 
+<script type="text/javascript" src="../jquery.js"></script>
+<style> 
+div
+{
+margin:30px;
+width:20px;
+height:10px;
+background-color:yellow;
+/* Rotate div */
+/* transform:rotate(9deg);
+-ms-transform:rotate(9deg); 
+-moz-transform:rotate(9deg);
+-webkit-transform:rotate(9deg)
+-o-transform:rotate(9deg); */
+
+/* transition: transform 2s; */
+
+}
+
+.zero{
+transform:rotate(9deg);
+transition: transform 2s;
+
+}
+.one{
+	/* Rotate div */
+	transform:rotate(999deg);
+	transition: transform 2s;
+} 
+</style>
+</head>
+<body>
+<div class=""></div>
+<button>aaaa</button>
+<button>aaaa</button>
+<button>aaaa</button>
+</body>
+<script>
+$(function(){
+	/* $("div").remove();
+	style="transition: transform 2s; transform: rotate(1999deg);"
+	var dv = '<div style="transition: transform 2s; transform: rotate(0deg);"></div>';
+	$("body").append(dv); */
+})
+$("button").eq(3).click(function(){
+	$("div").toggleClass("one");
+	
+	if($("div").hasClass("one")){
+		
+	}
+})
+$("button").eq(1).click(function(){
+	$("div").toggleClass("one");
+	
+	if($("div").hasClass("one")){
+		$("div").addClass("zero");
+	}
+})
+$("button").eq(0).click(function(){
+	$("div").removeClass("one");
+	setTimeout(function(){
+		$("div").addClass("one");
+	}, 10);
+})
+</script>
+</html>
