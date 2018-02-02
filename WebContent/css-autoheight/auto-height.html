@@ -14,7 +14,7 @@ body{
 	left:0px;
 	top:0px;
 	bottom:0px;
-	/* background: #f0f0f0; */
+	 background: #f0f0f0; 
 	padding:16px 0px;
 }
 .left-wap{
@@ -34,6 +34,18 @@ body{
 	border:2px solid #a6afbc;
 	border-radius:3px;
 }
+.alert-box{
+	display:none;
+	position: fixed;
+	width:200px;
+	height:100px;
+	background: #ffff00;
+	top:50%;
+	left:50%;
+	margin-left:-100px;
+	margin-top:-50px;
+}
+
 
 /* 上下居中 */
 .left-del{
@@ -50,7 +62,8 @@ body{
 <body>
 	<div class="left">
 		<div class="left-wap">
-			
+			<button>show</button>
+			<button>hide</button>
 		</div>
 	</div>
 	<div class="right">
@@ -61,6 +74,9 @@ body{
 	<div class="left-del">
 		左<
 	</div>
+	<div class="alert-box">
+		alert
+	</div>
 </body>
 <script>
 $(function(){
@@ -68,6 +84,13 @@ $(function(){
 	window.onresize = function(){
 		autoHeight();
 	}
+	
+	$("button").eq(0).click(function(){
+		$(".alert-box").show(500);
+	})
+	$("button").eq(1).click(function(){
+		$(".alert-box").hide(500);
+	})
 })
 
 function autoHeight(){
