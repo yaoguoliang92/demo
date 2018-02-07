@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>左中右布局中间自适应</title>
+<script type="text/javascript" src="../jquery.js"></script>
+<link rel="stylesheet" href="../reset.css">
+<style>
+.body{
+	width:100%;
+	height: 100%;
+	background: #f0f0f0;
+	left:0;
+	bottom:0;
+	right:0;
+	top:0;
+	position: absolute;
+}
+.body_left{
+	width:200px;
+	height: 100%;
+	position: absolute;
+	top:0;
+	left:0;
+	/* display:inline-block; */
+}
+.body_center{
+	margin-left: 205px;
+	margin-right: 205px;
+	height:100%;
+	background:#ffffff;
+	/* display:inline-block; */
+}
+.body_right{
+	position: absolute;
+	top:0;
+	right:0;
+	width:200px;
+	height: 100%;
+}
+</style>
+</head>
+<body>
+	<div class="body">
+		<div class="body_left">left</div>
+		<div class="body_center">ccc</div>
+		<div class="body_right">right</div>
+	</div>
+</body>
+<script>
+$(function(){
+	autoHeight();
+	window.onresize = function(){
+		autoHeight();
+	}
+	
+	$("button").eq(0).click(function(){
+		$(".alert-box").show(500);
+	})
+	$("button").eq(1).click(function(){
+		$(".alert-box").hide(500);
+	})
+})
+
+function autoHeight(){
+	var wh = $(window).height();
+	$(".wrapper").height(wh-36);
+	$(".left-wap").height(wh-36);
+}
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>左中右布局中间自适应</title>
+<script type="text/javascript" src="../jquery.js"></script>
+<link rel="stylesheet" href="../reset.css">
+<style>
+
+</style>
+</head>
+<body>
+	
+</body>
+<script>
+var flake = $("<div></div>").css("position","absolute").html("❄");
+$(function(){
+	var window_height = $(document).height();
+	var window_width = $(document).width();
+	console.log(window_width+":"+window_height);
+	setInterval(function(){
+		var start_left = Math.random()*window_width;
+		var end_left = Math.random()*window_width;
+		var time_slow = 4000 + 5000 * Math.random();
+		
+		flake.clone().appendTo($("body")).css({
+			"left":start_left,
+			"top":-55,
+			"color":"green"
+		}).animate({
+			"top":window_height-100,
+			"left":end_left
+		},time_slow,function(){
+			$(this).remove();
+		});
+	},50)
+	
+})
+
+</script>
+</html>
