@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>简单轮播</title>
+<script type="text/javascript" src="../jquery.js"></script>
+<style>
+*{margin:0px;padding:0px;}
+div{
+width:100px;height:100px;border:solid 1px #ff0000;
+position:absolute;
+top:0;
+left:0;
+bottom:0;
+right:0;
+margin:auto;
+overflow:hidden;
+}
+ul{
+	width:400px;
+	position:absolute;
+}
+li{
+	width:100px;
+	float:left;
+	list-style:none;
+	height: 100px;
+}
+.a{
+	background: #f0f0f0;
+}
+.b{background: #f9f9f9;}
+.c{background: #f3f3f3;}
+</style>
+</head>
+<body>
+<span>带索引的轮播需要换写法</span>
+<button>to3</button>
+<div>
+	<ul>
+		<li class="a">1</li>
+		<li class="b">2</li>
+		<li id="li3" class="c">3</li>
+		<li class="a">4</li>
+		<li class="b">5</li>
+		<li class="c">6</li>
+	</ul>
+</div>
+</body>
+<script>
+$(function(){
+	//scrollfuc();
+	var go = window.setInterval(scrollfuc, 1000);
+	//$("button").click(to3);
+})
+
+function to3(){
+	//$("ul").animate({left:"-300px"},1000,litoend);
+	var index = $("#li3").index();
+	var pianyi = -100*index;
+	console.log(pianyi);
+	$("ul").animate({left:pianyi+"px"},1000);
+	
+}
+
+function litoend(){
+	$("ul li").eq(0).appendTo($("ul"));
+	$("ul").css("left","0px");
+}
+function scrollfuc(){
+	$("ul").animate({left:"-100px"},1000,litoend);
+}
+
+
+
+</script>
+</html>
