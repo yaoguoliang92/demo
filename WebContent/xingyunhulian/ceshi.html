@@ -6,66 +6,50 @@
 <script type="text/javascript" src="../jquery.js"></script>
 <link rel="stylesheet" href="../reset.css">
 <style>
-.body{
-	width:100%;
-	height: 100%;
-	background: #f0f0f0;
-	left:0;
-	bottom:0;
-	right:0;
-	top:0;
-	position: absolute;
+#sel{
+	width:300px;
+	height:50px;
+	line-height: 50px;
+	border: solid 1px #f0f0f0;
+	outline: none;
+	font-size: 14px;
+	color: #666666;
+	padding-left: 30px;;
+}
+#sel option{
+	color:#000000;
+
+	height:50px;
+
 }
 .body_left{
-	width:200px;
-	height: 100%;
-	position: absolute;
-	top:0;
-	left:0;
-	/* display:inline-block; */
+	width:20%;
+	height: 500px;
+	border: 1px solid #000;
+	box-sizing:border-box;
+	/*position: absolute;*/
+	float:left;
 }
-.body_center{
-	margin-left: 205px;
-	margin-right: 205px;
-	height:100%;
-	background:#ffffff;
-	/* display:inline-block; */
+ .body_center{
+ width:80%;
+	height: 200px;
+	border: 1px solid #f0f0f0;
+	box-sizing:border-box;
+	/*margin-left:20%;*/
+
 }
-.body_right{
-	position: absolute;
-	top:0;
-	right:0;
-	width:200px;
-	height: 100%;
-}
+
 </style>
 </head>
 <body>
-	<div class="body">
-		<div class="body_left">left</div>
-		<div class="body_center">ccc</div>
-		<div class="body_right">right</div>
-	</div>
+		<div class="body_left">left</div><div class="body_center">ccc</div>
+		<!--<div class="body_right">right</div>-->
+		<select name="" id="sel">
+			<option value="1">aaa</option>
+			<option value="1">bbb</option>
+			<option value="1">ccc</option>
+		</select>
 </body>
 <script>
-$(function(){
-	autoHeight();
-	window.onresize = function(){
-		autoHeight();
-	}
-	
-	$("button").eq(0).click(function(){
-		$(".alert-box").show(500);
-	})
-	$("button").eq(1).click(function(){
-		$(".alert-box").hide(500);
-	})
-})
-
-function autoHeight(){
-	var wh = $(window).height();
-	$(".wrapper").height(wh-36);
-	$(".left-wap").height(wh-36);
-}
 </script>
 </html>
