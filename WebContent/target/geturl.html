@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script type="text/javascript" src="../jquery.js"></script>
+
+</head>
+<body>
+</body>
+
+<script>
+//那个介绍详情页面额挑战参数
+var $get = function(key) {
+  var arr = window.location.search.replace(/^\?/, ''),
+    kv;
+  if (!arr) {
+    return null;
+  }
+  arr = arr.split('&');
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i]) {
+      kv = arr[i].split('=');
+      if (kv[0] == key) {
+        kv[1] = arr[i].replace(kv[0] + "=", "");
+        if (kv[1]) {
+          return kv[1];
+        } else {
+          return ''
+        }
+      }
+    }
+  }
+  return null;
+};
+
+if($get("isPhone")){
+	var num = $get("isPhone");
+	if(num==0){			//判断窗口宽度
+		var width = $(window).width();
+			if(width<=667){
+				window.parent.location.href="/register/phonenav";
+			}
+	}
+}
+</script>
+</html>

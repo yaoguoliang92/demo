@@ -1,0 +1,16 @@
+.login_logo{
+	width:100%;
+	height:100px;
+	background: #f0f0f0;
+}
+
+
+/*导航*/
+.nav{
+	position: absolute;
+	width:200px;
+	top: 100px;
+	left:0px;
+	bottom:0px;
+	background: #f0f0f0;
+}
