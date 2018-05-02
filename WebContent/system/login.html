@@ -2,21 +2,24 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>网联汽车测试与数据管理系统</title>
 	<link rel="stylesheet" href="css/reset.css" />
 	<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="css/login.css"/>
 	<link rel="stylesheet" type="text/css" href="css/loading.css"/>
+	<link rel="stylesheet" href="dist/aos.css" />
 	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/base.js" type="text/javascript" charset="utf-8"></script>
-	
-	
-	<link rel="stylesheet" href="dist/aos.css" />
 	<script src="dist/aos.js"></script>
 </head>
 <body>
+	<!--loader  开始-->
 	<div class="loader_bg" style="display:none"></div>
 	  <div class="loader" style="display:none">
+	  	<img src="img/5-120604091309.gif" alt="" />
+		  <!--<span></span>
 		  <span></span>
 		  <span></span>
 		  <span></span>
@@ -30,9 +33,9 @@
 		  <span></span>
 		  <span></span>
 		  <span></span>
-		  <span></span>
-		  <span></span>
+		  <span></span>-->
 		</div>
+	<!--loader 结束-->	
 	<div class="bg_img">
 		<img src="img/carbg.jpg" class="blur" alt=""/>
 	</div>
@@ -49,19 +52,15 @@
 		<div class="login_box_in_btn_div margin-top28">
 			<input type="checkbox" class="login_checkbox"/>
 			<span>记住我</span>
-			<button class="submit_btn" data-aos="fade-up" aos-delay="500">登陆</button>
+			<button class="submit_btn">登陆</button><!--data-aos="fade-up" aos-delay="500"-->
 		</div>
 	</div>
 </body>
 <script type="text/javascript">
-	AOS.init({
-	  duration: 1200,
-	   delay: 100,
-	})
 	$(function(){
 		$(".login_box_in_input").focus(function(){
 			$(".login_box_in").css("box-shadow","none");;
-			$(this).parent().css("box-shadow","0px 0px 20px red");
+			$(this).parent().css("box-shadow","0px 0px 20px blue");
 		})
 	})
 	$(".submit_btn").click(function(){
@@ -87,7 +86,10 @@
 		}
 		
 	}
-	
+	AOS.init({
+	  duration: 600,
+	   delay: 100,
+	})
 
 </script>
 </html>

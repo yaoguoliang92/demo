@@ -51,7 +51,7 @@ body{
 	transition: all 0.5s;
 }
 .login_box_in:hover{
-	box-shadow:0px 0px 20px red
+	box-shadow:0px 0px 20px blue
 }
 .login_box_in_btn_div{
 	width:100%;
