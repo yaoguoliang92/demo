@@ -1,10 +1,25 @@
-<!DOCTYPE html>
+<!DOCTYPE html
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>main</title>
-		<link rel="stylesheet" href="../css/reset.css" />
+		<!--<link rel="stylesheet" href="../css/reset.css" />-->
+<!--		<link rel="stylesheet" href="../css/font-awesome.css" />-->
 		<link rel="stylesheet" href="../css/main.css" />
+		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			@media all and (max-width: 769px) {
+			    body{
+			        background-color:#666666;
+			    }
+			}
+			@media all and (min-width: 768px) {
+			    body{
+			        background-color:#f0f0f0;
+			    }
+			}
+		</style>
 	</head>
 	<body>
 		<!--logo 开始-->
@@ -15,10 +30,48 @@
 		
 		<!--左边导航开始-->
 		<div class="nav">
-			
+			<dl class="yin">
+				<dt>测试业务管理1</dt><i class="fa fa-angle-down" style="font-size:24px"></i>
+				<dd>测试业务管理2</dd>
+				<dd>测试业务管理3</dd>
+				<dd>测试业务管理4</dd>
+			</dl>
+			<dl class="yin">
+				<dt>测试业务1</dt><i class="fa fa-angle-down" style="font-size:24px"></i>
+				<dd>测试业务2</dd>
+				<dd>测试业务3</dd>
+				<dd>测试业务4</dd>
+			</dl>
+			<dl class="yin">
+				<dt>测试业务1</dt><i class="fa fa-angle-down" style="font-size:24px"></i>
+				<dd>测试业务2</dd>
+				<dd>测试业务3</dd>
+				<dd>测试业务4</dd>
+			</dl>
 		</div>
 		<!--左边导航结束-->
 		<div></div>
 		
 	</body>
+	<script type="text/javascript">
+		$(function(){
+			$(".nav dl").click(function(){
+				if($(this).hasClass("yin")){
+					$(this).removeClass("yin");
+					$(this).addClass("xian");
+					$(this).find("dd").slideDown();
+					$(this).find("i").removeClass("rotate0");
+					$(this).find("i").addClass("rotate180");
+				}else{
+					$(this).removeClass("xian");
+					$(this).addClass("yin");
+					$(this).find("dd").slideUp();
+					$(this).find("i").removeClass("rotate180");
+					$(this).find("i").addClass("rotate0");
+				}
+			})
+			
+			console.log($(window).width());
+		})
+	</script>
 </html>
