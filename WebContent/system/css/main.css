@@ -78,20 +78,20 @@
 	color:#fff;
 	cursor: pointer;
 }
-.nav dt,dd{
+.nav dt,li{
 	width:200px;
 	height: 35px;
 	line-height: 35px;
 	/*text-align: center;*/
 }
-.nav dd:hover{
+.nav li:hover{
 	background: #fff;
 	cursor: pointer;
 }
 .nav dt{
 	font-size: 16px;
 }
-.nav dd{
+.nav li{
 	display: none;
 	padding-left: 20px;
 }
