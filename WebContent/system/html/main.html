@@ -2,24 +2,12 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1,minmum-scale=1,maxmum-scale=1,user-scalable=no">  
 		<title>main</title>
-		<!--<link rel="stylesheet" href="../css/reset.css" />-->
-<!--		<link rel="stylesheet" href="../css/font-awesome.css" />-->
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/font-awesome.css" />
 		<link rel="stylesheet" href="../css/main.css" />
 		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
-		<style type="text/css">
-			@media all and (max-width: 769px) {
-			    body{
-			        background-color:#666666;
-			    }
-			}
-			@media all and (min-width: 768px) {
-			    body{
-			        background-color:#f0f0f0;
-			    }
-			}
-		</style>
 	</head>
 	<body>
 		<!--logo 开始-->
@@ -54,24 +42,18 @@
 		
 	</body>
 	<script type="text/javascript">
-		$(function(){
-			$(".nav dl").click(function(){
-				if($(this).hasClass("yin")){
-					$(this).removeClass("yin");
-					$(this).addClass("xian");
-					$(this).find("dd").slideDown();
-					$(this).find("i").removeClass("rotate0");
-					$(this).find("i").addClass("rotate180");
-				}else{
-					$(this).removeClass("xian");
-					$(this).addClass("yin");
-					$(this).find("dd").slideUp();
-					$(this).find("i").removeClass("rotate180");
-					$(this).find("i").addClass("rotate0");
-				}
-			})
-			
-			console.log($(window).width());
-		})
+	$(function(){
+		$(".nav dt").on("click",function(){
+			if($(this).next("i").hasClass("fa-angle-down")){
+				$(".nav i").removeClass("fa-angle-up").addClass("fa-angle-down");
+				$(".nav dd").slideUp();
+				$(this).next("i").removeClass("fa-angle-down").addClass("fa-angle-up");
+				$(this).parent().find("dd").slideDown();
+			}else{
+				$(".nav dd").slideUp();
+				$(this).next("i").removeClass("fa-angle-up").addClass("fa-angle-down");
+			}
+		});
+	})
 	</script>
 </html>

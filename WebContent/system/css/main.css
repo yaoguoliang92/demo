@@ -1,10 +1,21 @@
-/*.login_logo{
+@media screen and (max-width: 769px) {
+    body{
+        background-color:#666666;
+    }
+}
+@media screen and (min-width: 768px) {
+    body{
+        background-color:#f0f0f0;
+    }
+}
+/*logo*/
+.login_logo{
 	width:100%;
 	height:100px;
 	background: #f0f0f0;
-}*/
+}
 /*导航*/
-/*.nav{
+.nav{
 	position: absolute;
 	width:200px;
 	top: 100px;
@@ -30,7 +41,7 @@
 .nav dd{
 	display: none;
 }
-.fa-angle-down{
+.fa-angle-down,.fa-angle-up{
     position: absolute;
 	top: 5px;
 	right: 10px;
@@ -42,4 +53,4 @@
 .rotate0{
 	transform:rotate(0deg);
 	transition: transform 0.5s;
-}*/
+}
