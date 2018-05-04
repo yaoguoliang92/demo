@@ -15,7 +15,7 @@ address,cite,dfn,var,i,em,address{font-style:normal;}
 a{text-decoration:none;}
 a:hover{text-decoration:none;}
 textarea{overflow:auto;resize:none;}
-body{font:normal 12px "微软雅黑";color:#666;}
+body{font:normal 12px "微软雅黑";color:#000;}
 /* style */
 .clear{clear:both;overflow:hidden;height:0;}
 .left-list-menu{width:167px;background-color:#298dd6;}

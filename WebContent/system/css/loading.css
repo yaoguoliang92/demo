@@ -1,13 +1,13 @@
 .loader {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  margin: auto;
-  width: 175px;
-  height: 100px;
-  z-index: 9999;
+    position: absolute;
+    top: 50%;
+    bottom: 0px;
+    left: 50%;
+    right: 0px;
+    margin: auto;
+    z-index: 9999;
+    margin-top: -20px;
+    margin-left: -20px;
 }
 /*.loader span {
   display: block;
