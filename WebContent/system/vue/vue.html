@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root"></div>    <!--此div是挂载点-->  <!--挂载点内部是模板,可以卸载template-->
+		<!--实例间的关系-->
+		<!--写el挂载点
+		写data
+		写template模板-->
+				
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#root",//id root   el ->element
+			template:'<h1>111{{msg}}</h1>',
+			data:{
+				msg:"hellw"
+			}
+		});
+	</script>
+</html>

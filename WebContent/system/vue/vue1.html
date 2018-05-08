@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--<div id="root"><h1>{{number}}</h1></div>    -->
+		<!--<div id="root"><h1 v-text="number"></h1></div>   -->     <!--转义-->
+		<div id="root" v-on:click="handleclick"><h1 v-html="number"></h1></div>    
+				
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#root",//id root   el ->element
+			data:{
+				msg:"hellw",
+				number:123
+			},
+			methods:{
+				handleclick:function(){
+					this.number = 456;
+				}
+			}
+		});
+	</script>
+</html>

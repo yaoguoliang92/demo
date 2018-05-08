@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-if,v-show,v-for</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<!--<dvi v-if="show">helo</dvi>-->     <!--dom树会清除-->
+			<dvi v-show="show">helo</dvi>     <!--dom树不会清除   性能高多次显示-->
+			
+			<button @click="showhel">showhel</button>
+			
+			<ul>
+				<li v-for="(item,index) of list" :key="index">{{item}}</li>
+			</ul>
+		</div>    
+				
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#root",
+			data:{
+				show:false,
+				list:[4,5,6,8]
+			},
+			methods:{
+				showhel:function(){
+					this.show = !this.show;
+				}
+			}
+		});
+		
+//		冒号等于v-bind			//属性绑定
+//		双向数据绑定用 v-model    //控件值发生变化，Vue中的对应值变化 ，导致{{}}中的值变化
+		
+	</script>
+</html>

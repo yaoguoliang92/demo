@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>计算属性firstname+lastname与侦听器</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		
+		
+		<div id="root">
+			<input type="text" v-model="firstname" />
+			<input type="text" v-model="lastname" />
+			<div>{{fullname}}</div>
+			<div>{{count}}</div>
+		</div>    
+				
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#root",
+			data:{
+				firstname:"",
+				lastname:"",
+				count:0
+			},
+			computed:{				//计算属性的
+				fullname:function(){							//发生变化的时候才计算。这样性能高，从缓存读取。
+					return this.firstname +''+ this.lastname;
+				}
+			},
+			watch:{
+				firstname:function(){
+					this.count++;
+				},
+				lastname:function(){
+					this.count++;
+				}
+			}
+		});
+		
+//		冒号等于v-bind			//属性绑定
+//		双向数据绑定用 v-model    //控件值发生变化，Vue中的对应值变化 ，导致{{}}中的值变化
+		
+	</script>
+</html>

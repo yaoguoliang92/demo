@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<input v-model="inputvalue" />
+			<button @click="changevalue">提交</button>
+			<ul>
+				<!--<li v-for="(item,index) of list" :key="index">{{item}}</li>-->
+				<todo-item 
+					v-for="(item,index) of list" :key="index" :content="item"
+				>
+				</todo-item>
+			</ul>
+		</div>    
+				
+	</body>
+	<script type="text/javascript">
+	
+		//全局组件-不用生命也能使
+		Vue.component('todo-item',{
+			//接收content属性
+			props:['content'],
+			template:'<li>{{content}}</li>'
+		})
+	
+		//局部组件
+		/*var TodoItem = {
+			template:'<li>item</li>'
+		}*/
+		new Vue({
+			el:"#root",
+			//局部组件-声明
+			/*components:{
+				'todo-item':TodoItem
+			},*/
+			data:{
+				inputvalue:123,
+				list:[]
+			},
+			methods:{
+				changevalue:function(){
+					this.list.push(this.inputvalue);
+					this.inputvalue = "";
+				}
+			}
+		});
+		
+		
+//		冒号等于v-bind			//属性绑定
+//		双向数据绑定用 v-model    //控件值发生变化，Vue中的对应值变化 ，导致{{}}中的值变化
+		
+	</script>
+</html>

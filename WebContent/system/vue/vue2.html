@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>属性绑定和双向数据绑定</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		
+		<!--//		冒号等于v-bind			//属性绑定-->
+		<div id="root" :title="title">
+			<input v-model="number"/>
+			<h1>{{number}}</h1>
+		</div>    
+				
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el:"#root",
+			data:{
+				msg:"hellw",
+				number:123,
+				title:"this is title"
+			}
+		});
+		
+//		冒号等于v-bind			//属性绑定
+//		双向数据绑定用 v-model    //控件值发生变化，Vue中的对应值变化 ，导致{{}}中的值变化
+		
+	</script>
+</html>
