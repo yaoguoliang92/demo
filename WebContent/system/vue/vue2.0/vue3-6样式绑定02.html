@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue3-6样式绑定02</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<!--<div :style="styleObj"
+				@click="handleclick" >
+				hello
+			</div>-->
+			<div :style="[styleObj,{fontSize:'20px'}]"
+				@click="handleclick" >
+				hello
+			</div>
+		</div>    
+	</body>
+	<script type="text/javascript">
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					styleObj:{
+						color:"black",
+						border:"solid 1px #f0f0f0"
+					}
+				},
+				methods:{
+					handleclick:function(){
+						this.styleObj.color = this.styleObj.color==="black"?"red":"black";
+					}
+				}
+			});
+	</script>
+</html>

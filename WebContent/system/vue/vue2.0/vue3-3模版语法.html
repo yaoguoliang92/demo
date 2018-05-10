@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>3-3模板语法,v-后面可加js表达式</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<div>{{name}}</div>
+			<div v-text="name + ' lii'"></div>
+			<div v-html="name+' oooo'"></div>
+		</div>    
+	</body>
+	<script type="text/javascript">
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					name:"dell"
+				}
+			});
+	</script>
+</html>

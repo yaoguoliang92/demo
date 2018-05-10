@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>2-4MVVM</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<input id="inputEle" type="text" v-model="inputvalue" />
+			<button id="btn">按钮</button>
+			<ul id="list">
+				<li></li>
+			</ul>
+		</div>    
+				
+	</body>
+	<script type="text/javascript">
+//  jquery 面向dom开发，	
+//	mvvm   面向数据开发，	m层   重要  数据重要   modul  view   viewModel   代码量少
+//define propertys
+//		var app = new Vue({
+//			el:"#root",
+//			data:{
+//				inputvalue:133,
+//				list:[]
+//			}
+//		});
+		
+		function Page(){
+			
+		}
+		
+		$.extend(Page.prototype,{
+			init:function(){
+				this.bindEvents();
+				console.log(1);
+			},
+			bindEvents:function(){
+				var btn = $('#btn');
+				btn.on('click',$.proxy(this.handlerbtnClick,this))
+//				btn.on('click',handlerbtnClick)
+				console.log(2);
+			},
+			handlerbtnClick(){
+				var inputEle = $("#inputEle");
+				var inputvalue = inputEle.val();
+				var ulElem = $("#list")
+				ulElem.append('<li>'+ inputvalue+'</li>');
+				inputEle.val("");
+				console.log(3);
+			}
+		});
+		
+		$(function(){
+			$("#list").on('click',"li",function(){
+				alert($(this).html());
+			})
+		})
+		
+		
+		var page = new Page();
+		page.init();
+	</script>
+</html>

@@ -11,6 +11,7 @@
 			<button @click="changevalue">提交</button>
 			<ul>
 				<!--<li v-for="(item,index) of list" :key="index">{{item}}</li>-->
+				<!--//通过属性传值-->
 				<todo-item 
 					v-for="(item,index) of list" :key="index" :content="item"
 				>
@@ -21,7 +22,7 @@
 	</body>
 	<script type="text/javascript">
 	
-		//全局组件-不用生命也能使
+		//全局组件-不用声明也能使
 		Vue.component('todo-item',{
 			//接收content属性
 			props:['content'],

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>3-2生命周期钩子</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+		</div>    
+				
+	</body>
+	<script type="text/javascript">
+			//生命周期函数就是vue实例在某一时间点自动执行的函数   官网图
+			
+			//有模板则显示模板，没有则显示root的div
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					test:"hi"
+				},
+				template:"<div>{{test}}</div>",
+				beforeCreate:function(){
+					console.log("beforeCreate");
+				},
+				created:function(){
+					console.log("created");
+				},
+				beforeMount:function(){
+					console.log(this.$el);
+					console.log("beforeMount");
+				},
+				mounted:function(){
+					console.log(this.$el);
+					console.log("mounted");
+				},
+				beforeDestroy:function(){     //vm.$destroy()
+					console.log("deforeDestroyed");
+				},
+				destroyed:function(){
+					console.log("destroyed");
+				},
+				beforeUpdate:function(){
+					console.log("beforeUpdate");
+				},
+				updated:function(){
+					console.log("update");
+				}
+				//vm.test="22"
+			});
+	</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue3-7条件渲染02</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<div v-if="show">   
+				用户名：<input type="text" key="username"/>
+			</div>
+			<div v-else>   		
+				邮箱名: <input type="text" key="pass" />
+			</div>
+			
+			<!--必须连这写-->
+			<!--<div v-if="show">   		
+				{{message}}
+			</div>
+			<div v-else="show">   		
+				Bye world
+			</div>-->
+			
+			<!--display:none  性能高 不会删除-->
+			<!--<div v-show="show">			
+				{{message}}
+			</div>
+			<button @click="changeshow">按钮</button>-->
+		</div>    
+	</body>
+	<script type="text/javascript">
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					/*show:true,*/
+					show:true,
+					message:"world"
+				}/*,
+				methods:{
+					changeshow:function(){
+						this.show = !this.show
+					}
+				}*/
+			});
+	</script>
+</html>

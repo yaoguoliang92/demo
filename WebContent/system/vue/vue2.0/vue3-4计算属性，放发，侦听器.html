@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue3-5计算属性的setter和getter</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<!--{{fullname}}:{{age}}-->     <!--计算属性，没有（）-->
+			<!--{{fullname()}}:{{age}}	-->		<!--方法，有（）-->
+			{{fullname}}:{{age}}  
+		</div>    
+	</body>
+	<script type="text/javascript">
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					firstname:"dell",
+					lastname:"lee",
+					fullname:"Dell lee",//第三种
+					age:28
+				},
+				//1、计算属性,内置缓存   vm.age=22    有变化才执行
+//				computed:{
+//					fullname:function(){
+//						console.log("计算了一次")
+//						return this.firstname+" "+this.lastname
+//					}
+//				}
+//				2、方法
+				//无变化也执行vm.age=22 
+//				methods:{
+//					fullname:function(){
+//						console.log("计算了一次")
+//						return this.firstname+" "+this.lastname
+//					}
+//				}
+
+				//3、侦听firstName的改变
+				watch:{
+					firstName:function(){
+						console.log("计算了一次");
+						this.fullname = this.firstname+" "+this.lastname;
+					},
+					lastName:function(){
+						console.log("计算了一次");
+						this.fullname = this.firstname+" "+this.lastname;
+					}
+				}
+			});
+	</script>
+</html>

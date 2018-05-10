@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>每个组件都是一个Vue的实例，可以添加方法</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<input type="text" v-model="inputvalue"/>
+			<button @click="submitvalue">按钮</button>
+			<ul>
+				<!--<li v-for="(item,index) of list" :key="index">{{item}}</li>-->
+				<todo-item v-for="(item,index) of list" :key="index" :content="item">
+					
+				</todo-item>
+			</ul>
+		</div>    
+				
+	</body>
+	<script type="text/javascript">
+		Vue.component('todo-item',{
+			props:['content'],
+			template:'<li @click="fucalert">{{content}}</li>',
+			//每个组件都是一个Vue的实例，可以添加方法，每个实例也都是组件。如果没有component则挂载点及内容就是组件。--------------------------
+			methods:{
+				fucalert:function(){
+					console.dir("a");
+				}
+			}
+		})
+		
+//		var TodoItem = {
+//			props:['content'],
+//			template:'<li>{{content}}</li>'
+//		}
+		new Vue({
+			el:"#root",
+//			components:{
+//				'todo-item':TodoItem
+//			},
+			data:{
+				inputvalue:123,
+				list:[]
+			},
+			methods:{
+				submitvalue:function(){
+					if(this.inputvalue==""){
+						return;
+					}
+					this.list.push(this.inputvalue);
+					this.inputvalue = "";
+				}
+			}
+		})
+		
+		
+//		冒号等于v-bind			//属性绑定
+//		双向数据绑定用 v-model    //控件值发生变化，Vue中的对应值变化 ，导致{{}}中的值变化
+		
+	</script>
+</html>

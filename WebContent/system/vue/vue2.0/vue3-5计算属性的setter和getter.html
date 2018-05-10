@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue3-5计算属性的setter和getter也就是computed的set和get</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			{{fullName}}
+		</div>    
+	</body>
+	<script type="text/javascript">
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					firstName:"lell",
+					lastName:"lee"
+				},
+				computed:{
+					fullName:{
+						get:function(){
+							return this.firstName+" "+this.lastName
+						},
+						set:function(value){		//vm.fullName="aaa vvvv"  控制台输入这个，则执行set
+							var arr = value.split(" ");
+							this.firstName= arr[0];
+							this.lastName = arr[1];
+							console.log(value);
+						}
+					}
+				}
+				
+			});
+	</script>
+</html>
