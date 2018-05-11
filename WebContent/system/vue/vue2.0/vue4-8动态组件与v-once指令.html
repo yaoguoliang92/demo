@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue4-8动态组件与v-once指令</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<component :is="type"></component>
+			
+			<!--<childone v-if="type === 'childone'"></childone>
+			<childtwo v-if="type === 'childtwo'"></childtwo>-->
+			<button @click="handleClick">change</button>
+		</div>
+	</body>
+		<script type="text/javascript">
+			Vue.component('childone',{
+				template:'<div>one</div>'
+			})
+			Vue.component('childtwo',{
+				template:'<div>two</div>'
+			})
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					type:'childone'
+				},
+				methods:{
+					handleClick:function(){
+						this.type =this.type==='childone'?'childtwo':'childone';
+					}
+				}
+			});
+	</script>
+</html>

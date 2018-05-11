@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue4-3组件参数校验与非props特性.html</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<child content="123222"></child>
+			<!--:content后面是js表达式-->
+		</div>
+	</body>
+	<script type="text/javascript">
+/*	2.props特性
+		父传，子接收，dom不显示
+	非props特性
+		子组件没有接收props,会在dom展示
+*/
+			Vue.component('child',{
+				props:{
+//					content:String   //要求子组件属性必须是String Number
+//					content: [Number,String]
+					content:{
+						type:String,
+//						requird:false,   //警告
+//						default:'default value'//默认值
+						validator:function(value){//校验长度
+							return (value.length>5)
+						}
+					}
+				},
+				template:'<div>{{content}}</div>'
+			})
+			var vm = new Vue({
+				el:"#root"
+			});
+	</script>
+</html>

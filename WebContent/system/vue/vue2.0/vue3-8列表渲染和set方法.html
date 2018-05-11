@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue3-8列表渲染</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<!--<ul>
+				<li v-for="(item,index) of list">{{item.text}}</li>
+			</ul>-->
+			<div v-for="(item,key,index) of userInfo">{{item}} --- {{key}}--- {{index}}</div>
+			<button @click="setFunction">按钮</button>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+			var vm = new Vue({
+				el:"#root",
+				data:{
+//					list:[{id:"234",text:"aa"},
+//						{id:"345",text:"bb"},
+//						{id:"34335",text:"cc"}
+//					]
+					userInfo:{
+						name:"dell",
+						age:28,
+						gender:"male",
+						salary:"secret"
+					}
+				},
+				methods:{
+					setFunction:function(){
+						console.log(1)
+						//vm.$set(vm.userInfo,"address","beijing")
+						this.$set(vm.userInfo,"address","beijing")
+					}
+				}
+//1.数组				
+				//不能使用下标操作数组 1.使用vue提供的变异方法2.  
+//				push
+//				pop
+//				shift
+//				unshift
+//				splice
+//				sort
+//				reverse
+				//结束
+				//vm.list.splice(1,1,{id:"334",text:"ceshi"})
+//				Vue.set(vm.userInfo,1,5)//下标为1的改为5
+//				vm.$set(vm.userInfo,1,5)
+
+
+
+//2.对象
+//				操作对象的话,替换整个对象
+//				vm.userInfo={name:"dell",
+//						age:28,
+//						gender:"male"}
+//				或者   添加
+				//Vue.set(vm.userInfo,"address","beijing");
+//				vm.$set(vm.userInfo,"address","beijing")
+				
+				
+			});
+	</script>
+</html>

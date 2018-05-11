@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>animated要加上这个代表这个库</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="animate.css"/>
+	</head>
+	<body>
+		<!--1.注意   加-class自定义名  
+			2.加上animted代表这个库-->
+		<div id="root">
+			<transition 
+				enter-active-class="animated rotateInUpLeft"
+				leave-active-class="animated rotateInDownLeft"
+				>
+				<div v-if="show">hi vue</div>
+			</transition>
+			
+			<!--<div v-if="show">hi vue</div>-->
+			<button @click="handleClick">切换</button>
+		</div>
+	</body>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					show:true
+				},
+				methods:{
+					handleClick:function(){
+						this.show = !this.show
+					}
+				}
+			});
+	</script>
+</html>

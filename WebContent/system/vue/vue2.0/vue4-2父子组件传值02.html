@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue4-父子组件传值，子传父</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<counter :count="2" @inc="handleIncrease"></counter><!--父组件给子组件传至，通过属性传值-->
+			<counter :count="3" @inc="handleIncrease"></counter>
+			
+			<div>{{total}}</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//v-bind:count="0"  双引号是js表达式，所以0是数字
+			var counter ={
+				props:['count'],
+				data:function(){
+					return {
+						number:this.count
+					}
+				},
+				template:'<div @click="handleClick">{{number}}<div/>',
+				methods:{
+					handleClick:function(){
+						this.number+=2;
+						this.$emit('inc',2)	//传值
+					}
+				}
+			}
+			var vm = new Vue({
+				el:"#root",
+				components:{
+					counter:counter
+				},
+				data:{
+					total:5
+				},
+				methods:{
+					handleIncrease:function(step){		//接收
+						this.total+=step;
+					}
+				}
+			});
+	</script>
+</html>

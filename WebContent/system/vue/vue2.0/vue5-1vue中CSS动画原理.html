@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue5-1vue中CSS动画原理</title>
+		<title>指定transition的name</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			/* 可以设置不同的进入和离开动画 */
+			/* 设置持续时间和动画函数 */
+			.fades-enter-active, .fades-leave-active {
+			  transition: opacity .5s;
+			}
+			.fades-enter, .fades-leave-to {
+			  opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root">
+			
+			<transition name='fades'>
+				<div v-if="show">hi vue</div>
+			</transition>
+			
+			<!--<div v-if="show">hi vue</div>-->
+			<button @click="handleClick">切换</button>
+		</div>
+	</body>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					show:true
+				},
+				methods:{
+					handleClick:function(){
+						this.show = !this.show
+					}
+				}
+			});
+	</script>
+</html>

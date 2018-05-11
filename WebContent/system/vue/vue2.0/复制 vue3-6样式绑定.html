@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue3-6样式绑定.html</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.activated{
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="root">
+			<child :num="sss" @change="handleChange"></child>
+		</div>    
+	</body>
+	<script type="text/javascript">
+			Vue.component('child',{
+				props:['num'],
+				template:'<div @click="handClick">{{number}}</div>',
+				data:function(){
+					return {
+						number:this.num
+					}
+				},
+				methods:{
+					handClick:function(){
+						//console.log(this.number+1);
+						this.number+=1;
+						this.$emit('change',1)
+					}
+				}
+			})
+	
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					sss:55
+				},
+				methods:{
+					handleChange:function(step){
+						console.log("a");
+						console.log(this.sss);
+					}
+				}
+			});
+	</script>
+</html>

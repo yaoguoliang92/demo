@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue4-4给组件绑定原生事件  加.native</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<child @click.native="handleClick"></child>
+		</div>
+	</body>
+	<script type="text/javascript">
+			Vue.component('child',{
+//				template:'<div @click="handleChileClick">aaa</div>',
+				template:'<div>aaa</div>',
+				methods:{
+					handleChileClick:function(){
+						//console.log(2);
+						//this.$emit('click')
+					}
+				}
+			})
+			var vm = new Vue({
+				el:"#root",
+				methods:{
+					handleClick:function(){
+						console.dir(this)
+					}
+				}
+			});
+	</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue4-6在Vue中使用插槽slot 具名插槽  父给子传slot，子用插槽    //父给子组件传html代码 	</title>
+		<title>$emit $on Vue.prototype.bus = new Vue()</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<child>
+				<div class='header' slot="header">header</div>
+				<div class='header' slot="footer">footer</div>
+			</child>
+		</div>
+	</body>
+		<script type="text/javascript">
+			Vue.component('child',{
+				template:`<div>
+							<slot name="footer">ddd</slot>
+							<div>content</div>
+							<slot name="header">ddd</slot>
+						</div>`
+						
+			})
+			var vm = new Vue({
+				el:"#root"
+			});
+	</script>
+</html>

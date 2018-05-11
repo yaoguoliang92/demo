@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue4-5非父子组件传值 同级别 1.借助vue官方vuex  2.Bus/发布订阅模式/观察者模式/总线机制</title>
+		<title>$emit $on Vue.prototype.bus = new Vue()</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<child content="Dell"></child>
+			<child content="Lee"></child>
+		</div>
+	</body>
+		<script type="text/javascript">
+			//通过bus总线的方式
+			Vue.prototype.bus = new Vue()
+	
+			Vue.component('child',{
+				template:'<div @click="handleClcik">{{selfcontent}}</div>',
+				data:function(){
+					return {
+						selfcontent:this.content
+					}
+				},
+				props:{
+					content:String
+				},
+				methods:{
+					handleClcik:function(){
+						//alert(this.content);
+						this.bus.$emit('change',this.selfcontent)
+					}
+				},
+				mounted:function(){
+					var this_ = this
+					this.bus.$on('change',function(msg){
+						this_.selfcontent=msg
+					})
+				}
+			})
+			var vm = new Vue({
+				el:"#root",
+				methods:{
+					handleClick:function(){
+						console.dir(this)
+					}
+				}
+			});
+	</script>
+</html>

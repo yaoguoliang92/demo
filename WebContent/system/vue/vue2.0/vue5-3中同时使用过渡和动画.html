@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue5-3中使用过渡和动画,第一次显示</title>
+		<title>第一次显示appear appear-active-class</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="animate.css"/>
+		<style type="text/css">
+		.fade-enter,
+		.fade-leave-to{
+			opacity:0;
+		}
+		.fade-enter-active,
+		.fade-leave-active{
+			transition:opacity 3s;
+		}
+		</style>
+	</head>
+	<body>
+		
+		<div id="root">
+			<transition 
+				name="fade"
+				appear
+				enter-active-class="animated shake fade-enter-active"
+				leave-active-class="animated bounce fade-leave-active"
+				appear-active-class="animated rotateInDownLeft"
+				>
+				<div v-if="show">hi vue</div>
+			</transition>
+			
+			<!--<div v-if="show">hi vue</div>-->
+			<button @click="handleClick">切换</button>
+		</div>
+	</body>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					show:true
+				},
+				methods:{
+					handleClick:function(){
+						this.show = !this.show
+					}
+				}
+			});
+	</script>
+</html>

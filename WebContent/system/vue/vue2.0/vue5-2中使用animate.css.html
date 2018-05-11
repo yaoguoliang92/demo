@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue5-1vue中CSS动画原理</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+		@keyframes bounce-in{
+			0%{
+				transform:scale(0);
+			}
+			50%{
+				transform:scale(1.5);
+			}
+			100%{
+				transform:scale(1);
+			}
+		}
+/*指定name为fade  <transition name=fade  */
+.fade-enter-active {
+  transform-origin:left center;
+  animation:bounce-in 1s;
+}
+.fade-leave-active{
+	transform-origin:left center;
+	animation:bounce-in 1s reverse;
+}
+
+/*自定义*/
+/*enter-active-class="active"*/
+.active {
+  transform-origin:left center;
+  animation:bounce-in 1s;
+}
+.leave{
+	transform-origin:left center;
+	animation:bounce-in 1s reverse;
+}
+
+		</style>
+	</head>
+	<body>
+		<div id="root">
+			<transition 
+				enter-active-class="active"
+				leave-active-class="leave"
+				>
+				<div v-if="show">hi vue</div>
+			</transition>
+			
+			<!--<div v-if="show">hi vue</div>-->
+			<button @click="handleClick">切换</button>
+		</div>
+	</body>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#root",
+				data:{
+					show:true
+				},
+				methods:{
+					handleClick:function(){
+						this.show = !this.show
+					}
+				}
+			});
+	</script>
+</html>
