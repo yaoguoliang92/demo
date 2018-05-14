@@ -14,6 +14,12 @@
 		<div id="root">
 			<child :num="sss" @change="handleChange"></child>
 		</div>    
+		
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
 	</body>
 	<script type="text/javascript">
 			Vue.component('child',{
@@ -45,5 +51,51 @@
 					}
 				}
 			});
+			
+			var lis = document.getElementsByTagName("li");
+//			for(var i=0;i<lis.length;i++){
+//				(function(i){
+//					lis[i].onclick = function(){
+//						alert(i);
+//					}
+//				})(i);
+//			}
+			
+//			for(let i=0;i<lis.length;i++){
+//				lis[i].onclick = function(){
+//					alert(i);
+//				}
+//			}
+			
+//			const s = new Set();//一旦声明必须初始化
+//			let arr = [1,2,3,4,5,5,5]
+//			arr.forEach(x=>s.add(x));
+//			s.add(6);
+//			for(var i of s){
+//				console.log(i);
+//			}
+			
+//			const arr = [];  
+//			// 报错，[1,2,3]与[]不是同一个地址  
+//			arr = [1,2,3];  
+//			const arr = []; 
+
+			var obj = {};
+			var arr = [1,2,3,4,5,2,3,3,3,3,3];
+			for(var i=0;i<arr.length;i++){
+				var v = arr[i];
+				if(obj[v]&&obj[v].value==v){
+					 obj[v].count = ++ obj[v].count;
+				}else{
+					obj[v] = {};
+					obj[v].count = 1;
+					obj[v].value = v;
+				}
+			}
+			console.dir(obj);
+//			for(key in obj){
+//				console.log(key+":"+obj[key].value+":"+obj[key].count);
+//			}
+			
 	</script>
 </html>
