@@ -3,7 +3,8 @@ $(function(){
 		{
 			"dt":"2.1权限管理",
 			"li":[
-				{"_link":"iframe2.html","text":"2.1权限管理"}
+				{"_link":"iframe2.html","text":"2.1权限管理"},
+				{"_link":"iframe2.html","text":"2.1这里可以随意加"}
 			]
 		},{
 			"dt":"2.2测试区测试资源管理",

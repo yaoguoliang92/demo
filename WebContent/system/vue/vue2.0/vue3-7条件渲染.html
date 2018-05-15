@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div id="root">
-			<div v-if="show==='a'">   
+			<!--<div v-if="show==='a'">   
 				this is a 
 			</div>
 			<div v-else-if="show==='b'">   		
@@ -15,7 +15,7 @@
 			</div>
 			<div v-else>   		
 				this is c
-			</div>
+			</div>-->
 			
 			<!--必须连这写-->
 			<!--<div v-if="show">   		
@@ -26,25 +26,29 @@
 			</div>-->
 			
 			<!--display:none  性能高 不会删除-->
-			<!--<div v-show="show">			
+			<div v-show="show">			
 				{{message}}
 			</div>
-			<button @click="changeshow">按钮</button>-->
+			<div v-show="show">			
+				{{message}}
+			</div>
+			<button @click="changeshow">按钮</button>
 		</div>    
 	</body>
 	<script type="text/javascript">
 			var vm = new Vue({
 				el:"#root",
 				data:{
-					/*show:true,*/
-					show:'a',
+					show:true,
 					message:"world"
-				}/*,
+					/*show:'a',
+					message:"world"*/
+				},
 				methods:{
 					changeshow:function(){
 						this.show = !this.show
 					}
-				}*/
+				}
 			});
 	</script>
 </html>
