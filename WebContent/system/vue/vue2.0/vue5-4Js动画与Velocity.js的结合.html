@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>5-4 Vue中的Js动画与Velocity.js的结合</title>
+		<title>钩子函数@before-enter@enter   @before-leave @leave @after-leave</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="velocity.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="animate.css"/>
+	</head>
+	<body>
+		<div id="root">
+			<transition
+				name="fade"	
+				@before-enter="handlerClickBeforeEnter"
+				@enter="handlerClickEnter"
+				@after-enter="handlerClickAfterEnter"
+			>
+				<div v-show="show">this is a div</div>
+			</transition>
+			<button @click="handlerClick">button</button>
+		</div>
+	</body>
+		<script type="text/javascript">
+		var vm = new Vue({
+			el:"#root",
+			data:{
+				show:true
+			},
+			methods:{
+				handlerClick:function(){
+					this.show = !this.show
+				},
+				handlerClickBeforeEnter:function(el){
+//					el.style.color = 'red'
+					el.style.opacity = 0;
+				},
+				handlerClickEnter:function(el,done){
+					/*setTimeout(()=>{
+						el.style.color = 'green'
+					},2000)
+					
+					setTimeout(()=>{
+						done()
+					},4000)*/
+					
+//					velocity
+					Velocity(el,
+						{
+							opacity:1
+						},{
+							duration:1000,
+							complete:done
+						})
+				},
+				handlerClickAfterEnter:function(el){
+					el.style.color = '#000'
+				}
+			}
+		})
+	</script>
+</html>

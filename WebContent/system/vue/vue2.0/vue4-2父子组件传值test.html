@@ -7,36 +7,40 @@
 	</head>
 	<body>
 		<div id="root">
-			<counter :count="0"></counter><!--父组件给子组件传至，通过属性传值-->
-			<counter :count="1"></counter>
+			<counter :count="0" @inc="incfunction"></counter>
+			<counter :count="1" @inc="incfunction"></counter>
+			
+			<div>{{numfu}}</div>
 		</div>
 	</body>
 	<script type="text/javascript">
-		//v-bind:count="0"  双引号是js表达式，所以0是数字
-			var counter ={
+			var counter = {
 				props:['count'],
 				data:function(){
 					return {
 						number:this.count
 					}
 				},
-				template:'<div @click="handleClick">{{number}}<div/>',
+				template:'<div @click="handleClick">{{number}}</div>',
 				methods:{
 					handleClick:function(){
-						//this.count++;//有问题
-//						单项数据流，父组件随意向子组件传数据，（对象，等），但子组件不能随意修改接收到的内容
-						//clone 修改。
-						this.number++;
+						this.number++
+						this.$emit("inc",1)
 					}
 				}
 			}
 			var vm = new Vue({
 				el:"#root",
+				data:{
+					numfu:0
+				},
 				components:{
 					counter:counter
 				},
-				data:{
-					counter:5
+				methods:{
+					incfunction:function(){
+						this.numfu++
+					}
 				}
 			});
 	</script>

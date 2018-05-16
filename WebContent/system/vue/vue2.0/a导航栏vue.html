@@ -24,6 +24,7 @@
 }
 
 .displayblock{
+	/*display:none;*/	
 	color:red;
 }
 		</style>
@@ -38,7 +39,7 @@
 			</transition>
 			<button @click="handleClick">按钮</button>
 			
-			<div v-for="(list1,key,index) of list">
+			<div v-for="(list1,key,index) of list" :class="{'displayblock':!!key}">
 				<div v-for="(items,key,index) of list1.div">
 					<h3>{{items.dt}}</h3>
 					<h6 v-for="(item,key,index) of items.li">{{item._link}}</h6>
@@ -52,7 +53,7 @@
 			el:"#root",
 			data:{
 				show:true,
-				displayblock:'displayblock',
+				activeId:0,
 				list:[
 					{div:[
 			                {
@@ -74,7 +75,7 @@
 			            ]
 					},{
 		            	div:[{
-		            		dt:"dtdt",
+		            		dt:"3.dtdt",
 		            		li:[
 		            			{_link:"3333.html",text:"2.3.客户信息管理"}
 		            		]
@@ -87,6 +88,6 @@
 				}
 			}
 		});
-		
+		//:class="{'displayblock':!key}"
 	</script>
 </html>

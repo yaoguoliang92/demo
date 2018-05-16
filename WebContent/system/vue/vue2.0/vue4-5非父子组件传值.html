@@ -32,20 +32,15 @@
 						this.bus.$emit('change',this.selfcontent)
 					}
 				},
-				mounted:function(){
+				mounted:function(){							//钩子函数
 					var this_ = this
-					this.bus.$on('change',function(msg){
+					this.bus.$on('change',function(msg){		//监听chang事件
 						this_.selfcontent=msg
 					})
 				}
 			})
 			var vm = new Vue({
-				el:"#root",
-				methods:{
-					handleClick:function(){
-						console.dir(this)
-					}
-				}
+				el:"#root"
 			});
 	</script>
 </html>
