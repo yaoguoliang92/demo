@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>dh</title>
+		<link rel="stylesheet" type="text/css" href="animate.css"/>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script src="velocity.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.gl_top_div{
+			width:800px;
+			min-height: 800px;
+			position: absolute;
+			top:50px;
+			left:320px;
+			background: #f0f0f0;
+		}
+		.msg_div{
+			width:700px;
+			height:200px;
+			background-image: url(32.png);
+			background-repeat:no-repeat; 
+			background-size:100% 100%;
+			-moz-background-size:100% 100%;
+		}
+		.msg_one{
+			/*background: #A8A8A8;*/
+			display: none;
+			animate-duration: 0.5s; 
+		}
+		.msg_two{
+			/*background: #A8A8A8;*/
+			display: none;
+		}
+		
+		.fadeOutRight {
+		    animation-duration: 0.5s;
+		   /* animate-delay: 1s;    
+		    animate-iteration-count: 2;   */
+		}
+	</style>
+	<body>
+		<div class="gl_top_div">
+<!--			<div class="msg_div msg_one">
+				one message
+			</div>
+			<div class="msg_div msg_two">
+				two message
+			</div>-->
+		</div>
+		<button id="btn1">show1</button>
+		<button id="btn2">hide1</button>
+		<button id="btn3">show2</button>
+		<button id="btn4">hide2</button>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			$("#btn1").on("click",function(){
+				var str='<div class="msg_div msg_one">one message</div>'
+				$(".gl_top_div").append(str)
+				showMsgDiv($('.msg_one'));
+			})
+			$("#btn2").on("click",function(){
+				hideMsgDiv($('.msg_one'));
+			})
+			$("#btn3").on("click",function(){
+				var str='<div class="msg_div msg_two">two message</div>'
+				$(".gl_top_div").append(str)
+				showMsgDiv($('.msg_two'));
+			})
+			$("#btn4").on("click",function(){
+				hideMsgDiv($('.msg_two'));
+			})
+			
+//			function showMsgDiv(){
+//				$(".msg_one").show();
+//				$(".msg_one").css("");
+//				console.log("a");
+//				$(".msg_one").velocity({
+//				    top: "0px",
+//				    opacity:1
+//				}, {
+//				    duration: 450,
+//				    delay: 10
+//				});
+//			}
+			function showMsgDiv(el){
+				 el.show();
+				 el.addClass('animated bounce');
+			}
+			function hideMsgDiv(el){
+				 el.removeClass('bounce').addClass('fadeOutRight');//bounceOutRight
+				 setTimeout(function(){
+				 	el.hide();
+				 	el.removeClass('fadeOutRight');
+				 	el.remove();
+				 },500)
+			}
+			
+		})
+	</script>
+</html>
