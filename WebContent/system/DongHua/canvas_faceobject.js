@@ -5,11 +5,12 @@ var Tool = (function($){
 	var width,height;
 	var gl_i;
 	var speed;
+	var ss={speed:10};//可更改ss实现不同的速度条大小
 	var s = setInterval(draw,1000);
 	
-	
 	function draw(){
-		speed = Math.random()*15+5;
+		speed = ss.speed;
+		console.log(speed);
 	    var canvas = document.getElementById('canvas');
 	    context = canvas.getContext('2d');
 	    width = canvas.width;
@@ -52,7 +53,8 @@ var Tool = (function($){
 	}
 	
 	return {
-		drawfuc:draw
+		drawfuc:draw,
+		ss:ss
 	}
 	
 })(jQuery);
