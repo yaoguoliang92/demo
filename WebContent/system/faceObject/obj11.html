@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	var o = new Object();
+	o.name='xxx';
+	Object.defineProperty(o,'yy',{value:100,writable:false});//属性不可修改
+	
+	//get set writable,enuerable,configurable,value    枚举,是否可配置
+	Object.defineProperties(o,{
+		salary:{
+			value:1000,
+			writbale:false
+		},
+		gender:{
+			value:true
+		},
+		height:{
+			get:function(){
+				return 180
+			},
+			set:function(val){
+				console.log(val);
+			}
+		}
+	})
+	
+	
+	Object.getOwnPropertyDescriptor(o,'address')
+</script>
+</html>

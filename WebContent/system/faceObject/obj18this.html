@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>this</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+function f(){
+	this.name = "asd";
+}
+var o = {
+	name:'cj',
+	print:function(){
+		console.log(this.name);
+	}
+}
+
+
+function log(a){
+	console.log(this[a]);
+}
+
+log("name");
+log.call(o,"name");//call 改变this的指向       相当于o.print("name")
+log.apply(o,["name"]);//call 改变this的指向
+
+</script>
+</html>
