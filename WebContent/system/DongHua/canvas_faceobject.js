@@ -1,5 +1,6 @@
 //闭包的写法   
 //AMD、CMD、UMD 模块的写法？
+//fire分发事件
 var Tool = (function($){
 	var context;
 	var width,height;
@@ -58,3 +59,8 @@ var Tool = (function($){
 	}
 	
 })(jQuery);
+
+function chngespeed(){
+	var speed = Math.random()*15+5;
+	Tool.ss.speed=speed;
+}

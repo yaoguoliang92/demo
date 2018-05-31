@@ -23,7 +23,7 @@ function log(a){
 }
 
 log("name");
-log.call(o,"name");//call 改变this的指向       相当于o.print("name")
+log.call(o,"name");//call 改变this的指向       相当于o.print("name"),log方法中的this不是指向log，而是指向o
 log.apply(o,["name"]);//call 改变this的指向
 
 </script>

@@ -23,10 +23,14 @@
 			<!--上边导航结束-->
 			
 			<!--user button start-->
-			<ul class="headlink_right_ul fr">
-				<li class="fl"><i class="fa fa-user-circle" style="font-size:20px"></i>你好,111</li>
-				<li class="fl logout"><i class="fa fa-power-off" style="font-size:20px"></i>退出</li>
-			</ul>
+			<div class="headlink_right_ul fr">
+				<ul>
+					<li class="headlink_right_ul_li fl"><i class="fa fa-user-circle" style="font-size:20px"></i>你好,111</li>
+					<li class="headlink_right_ul_li fl logout" style="width:80px"><i class="fa fa-power-off" style="font-size:20px"></i>退出</li>
+				</ul>
+				<span class="nav-bar" style="left: 19.5px; top: 95px; width: 0px; opacity: 1;"></span>
+			</div>
+		
 			<!--user button end-->
 		</div>
 		<!--top 结束-->
@@ -132,6 +136,24 @@
 		
 		$(".logout").click(function(){
 			window.location.href="../login.html";
+		})
+		
+		$(".headlink_right_ul_li").mouseenter(function(){
+			var offset = $(this).offset();
+			var left = offset.left;
+			var uloffset = $(".headlink_right_ul ul").offset();
+			var ulleft = uloffset.left;
+			
+			var width = $(this).width();
+			var index = $(this).index();
+			$(".nav-bar").width(width);
+			$(".nav-bar").css("opacity",1);
+			$(".nav-bar").css("left",left-ulleft);
+		})
+		$(".headlink_right_ul_li").mouseleave(function(){
+			$(".nav-bar").width(0);
+			$(".nav-bar").css("opacity",0);
+//			$(".nav-bar").css("left",0);
 		})
 		
 	})

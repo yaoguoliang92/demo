@@ -44,12 +44,27 @@
 /*headnav end*/
 
 /*user button start*/
+.headlink_right_ul{
+	position: relative;
+}
 .headlink_right_ul li{
 	width:100px;
 	height:30px;
 	margin-top:60px;
 	font-size: 14px;
 	line-height: 14px;
+    text-shadow: 0 0 1px #629ab6;
+}
+
+.nav-bar{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 5px;
+    background-color: #000;
+    transition: all .2s;
+    -webkit-transition: all .2s;
 }
 /*user button end*/
 
@@ -83,6 +98,8 @@
 	height: 35px;
 	line-height: 35px;
 	/*text-align: center;*/
+	    transition: background .2s;
+    -webkit-transition: background .2s;
 }
 .nav li:hover{
 	background: #fff;
