@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/handlebars.min.js" type="text/javascript" charset="utf-8"></script>
+<body>
+        <div id = "person_info">
+            {{#each this}}
+            <div class = "person">
+                <div>姓名：{{name}}</div>
+                <div>出生地：{{home}}</div>
+                <div>职业：{{job}}</div>
+                {{#if life}}
+                　　<div>生涯经历：</div>
+                    <ul>
+                    {{#each life}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                    </ul>
+                {{/if}}
+            </div>
+            {{/each}}
+        </div>
+    </body>
+    
+    <script>
+        var data =[{
+            name:'约翰莫里森',
+            home:'美国',
+            job:'摔跤手'
+        },
+        {
+            name:'Faker',
+            home:'韩国',
+            job:'英雄联盟职业选手',
+            life:['S3世界总冠军','S4世界总冠军','S5世界总冠军']
+        }];
+        
+        var tmpl = $('#person_info').html();
+        console.log(tmpl);
+        var func = Handlebars.compile(tmpl);
+        var result = func(data);
+        $('#person_info').html(result);
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>http://www.ghostchina.com/introducing-the-handlebars-js-templating-engine/</title>
+</head>
+<body>
+<div id="content"></div>
+<script src="lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/handlebars.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/html" id="user-template">
+    <div>姓名 {{name}}</div>
+    <div>年龄 {{age}}</div>
+    <div>信息 {{info}}</div>
+</script>
+
+<script type="text/javascript">
+
+    //模拟的数据
+    let user = {
+        name:"liuqiang",
+        age:23,
+        info:"你四点就好似发动机是否抗静电"
+    };
+
+    //找到user-template的模板
+    let $userTemplate = $("#user-template").html();
+    //返回的是一个函数
+    let fun = Handlebars.compile($userTemplate);
+    //调用生成的fun函数 返回一个html文本
+    let userHtml = fun(user);
+    //填充到html中
+    $("#content").html(userHtml);
+</script>
+</body>
+</html>
