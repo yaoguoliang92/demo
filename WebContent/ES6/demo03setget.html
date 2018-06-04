@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo01</title>
+</head>
+<body>
+
+</body>
+<script>
+//set
+const s = new Set();//不可重复
+[2,3,6,4,3,3].forEach(x=>s.add(x));
+for(let i of s){
+	//console.log(i);
+}
+
+
+//map
+//对象也可以当键
+const m = new Map();
+
+//map
+const items = [
+	['name',"zhangs"],
+	['name2',"lisi"]
+];
+
+items.forEach(([key,value])=>m.set(key,value));//map构造函数
+//console.log(m.get('name'));
+
+
+var str = "aaccccsssssabbc";
+let arr = str.split("");
+const mm = new Map();
+for(let i=0;i<arr.length;i++){
+	if(!mm.get(arr[i])){
+		mm.set(arr[i],1)
+	}else{
+		mm.set(arr[i],mm.get(arr[i])+1);
+	}
+}
+console.log(mm);
+for(let i of mm){
+	console.log(i[0]+":"+i[1])
+}
+
+</script>
+</html>

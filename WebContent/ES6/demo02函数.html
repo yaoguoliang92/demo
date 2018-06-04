@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>函数</title>
+</head>
+<body>
+
+</body>
+<script>
+//es5
+function log(x,y){
+	x = x || 10;
+	y = y || 11;
+	console.log(x,y);
+}
+
+function log_es6(x,y='world'){
+	console.log(x,y);
+}
+//log();
+//log_es6('hello ');
+
+//console.log(log_es6.name);//es6中函数.name返回函数名
+
+//箭头函数	重要this的指向是固定的。指向定义时所在的对象。
+var f = function(){
+	return 5;
+}
+
+var f = ()=>5;
+
+var sum = function(a,b){
+	return a+b;
+}
+var sum_es6 = (a,b)=>a+b;
+console.log(sum_es6(4,5));
+
+</script>
+</html>

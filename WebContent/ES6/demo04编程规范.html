@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo01</title>
+</head>
+<body>
+（1）let 取代 var
+
+（2）全局常量和线程安全
+// bad
+var a = 1, b = 2, c = 3;
+
+// good
+const a = 1;
+const b = 2;
+const c = 3;
+
+// best
+const [a, b, c] = [1, 2, 3];
+</body>
+<script>
+//map()方法将调用的数组的每个元素传递给指定的函数，并返回一个数组，它包含该函数的返回值。
+let s = [1, 2, 3].map(function (x) {
+  return x * x;
+});
+console.log(s);
+
+let ms = [1,2,5].map(s=>s*s);
+console.log(ms);
+
+</script>
+</html>

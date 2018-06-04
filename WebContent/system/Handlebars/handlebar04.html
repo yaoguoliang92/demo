@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>if</title>
+</head>
+<script src="lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/handlebars.min.js" type="text/javascript" charset="utf-8"></script>
+<body>
+</body>
+<div id="template">
+	{{#if list}}
+			{{#each list}}
+				<li>{{this}}</li>
+			{{/each}}
+	{{else}}
+		{{error}}
+	{{/if}}
+	
+	
+	{{#each objarr}}
+		<span>{{this.name}}</span>
+	{{/each}}
+</div>
+    
+    <script>
+        var data = {  
+		    list:['HTML5','CSS3',"WebGL"],
+		    "error":"数据取出错误",
+		    objarr:[{'name':'1'},{'name':'2'},{'name':'3'},{'name':'4'}]
+		}
+        
+        var template = $("#template").html();
+        var func = Handlebars.compile(template);
+        var result = func(data);
+        $('#template').html(result);
+        
+        
+        //颜色
+        $('#template').find('span').each(function(index,val){
+        	if(index%2==0){
+        		$(this).css('background','#f0f0f0');
+        	}
+        })
+    </script>
+</body>
+</html>
