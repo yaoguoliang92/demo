@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">  
 		<title></title>
 	</head>
 	<link rel="stylesheet" type="text/css" href="game1.css"/>
@@ -39,58 +40,69 @@
 		<div class='weui-grid we1'>2</div>
 		<div class='weui-grid we2'>3</div>
 		<div class='weui-grid we7'>8</div>
+		<!--<div class='weui-grid sss' id="start" onclick="aa()">开始</div>-->
 		<div class='weui-grid sss' id="start" onclick="aa()">开始</div>
 		<div class='weui-grid we3'>4</div>
 		<div class='weui-grid we6'>7</div>
 		<div class='weui-grid we5'>6</div>
 		<div class='weui-grid we4'>5</div>
-
 		<!--<button onclick="stop()">button</button>-->
 	</body>
 	<script>
-		function aa(){
-			var num = Math.floor(Math.random()*1000+1000);
-			console.log(num)
-			Tool.timeonefunction(100);
-			setTimeout(stop,num);
-		}
-		function stop(){
-			console.log('stop');
-			Tool.endtime();
-			Tool.timeonefunction(500);
-			setTimeout(function(){
-				Tool.endtime();
-				console.log(Tool.obj.count);
-			},4000)
-		}
-		
-		var Tool = (function(){
-			var obj={};
-			var i=0,timeone;
-			function showlight(){
-				obj.count=i;
+		function Box(name){
+			//private
+			var num = 1;
+			this.i=0;
+			//public(实例化的之后，实例化的对象就可以访问到了~)
+			this.name=name;
+			this.getName = function(){
+				console.log(num);
+				return num;
+			}
+			this.showlight=function(){
+				console.log('showlight');
+				var i = this.i;
+				console.log(i);
 				$('.weui-grid').removeClass('bg-black')
 				$('.we'+i).addClass('bg-black');
-				i++;
+				this.i++;
 				if(i==8){
-					i=0;
+					this.i=0;
 				}
 			}
-			function timeonefunction(millisec){
-				timeone = setInterval(function(){
-					showlight();
+			this.stop = function(){
+				var that = this;
+				clearInterval(this._timeone);
+			}
+		}
+		Box.prototype={
+			timeonefunction:function(millisec){
+				//this.showlight();
+				var that = this;
+				this._timeone = setInterval(function(){
+					that.showlight();
 				},millisec)
+			},
+			endtime:function(){
+				var that = this;
+				clearInterval(that._timeone);
 			}
-			function endtime(){
-				clearInterval(timeone);
-				
-			}
-			return {
-				showlight:showlight,
-				timeonefunction:timeonefunction,
-				endtime:endtime,
-				obj:obj
-			}
-		})()
+		}
+	
+		function aa(){
+			var b = new Box();
+			b.timeonefunction(100);
+			setTimeout(function(){
+				bb(b);
+			},2000);
+		}
+		function bb(b){
+			b.stop.call(b);
+			b.timeonefunction(500);
+			setTimeout(function(){
+				b.stop.call(b);
+			},4000);
+		}
+		
 	</script>
 </html>
