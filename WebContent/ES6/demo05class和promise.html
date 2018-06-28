@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>https://blog.csdn.net/shan1991fei/article/details/78966297</title>
+</head>
+<body>
+<script type="text/javascript">
+function runAsync(){
+    var p = new Promise(function(resolve, reject){
+        //做一些异步操作
+        setTimeout(function(){
+            console.log('执行完成');
+            resolve('随便什么数据');
+        }, 2000);
+    });
+    return p;            
+}
+//runAsync();
+
+
+runAsync().then(function(data){
+    console.log(data);
+    //后面可以用传过来的数据做些其他操作
+    //......
+});
+
+//场景  promise.All  .rise流
+//图片加载成功后再加载到页面
+{
+    //所有图片加载完再加载页面
+    function loadImg(src){
+        return new Promise((resolve,reject)=>{
+            let img = document.createElement('img');
+            img.src = src;
+            img.onload = function(){
+                resolve(img);
+            }
+            img.onerror=function(){
+                reject(err);
+            }
+        })
+    }
+    function showImgs(imgs){
+        console.log(imgs);
+        imgs.forEach(function(img){
+            
+          document.body.appendChild(img);
+        })
+    }
+
+    Promise.all([
+        loadImg('http://i4.buimg.com/567571/df1ef0720bea6832.png'),
+        loadImg('http://i4.buimg.com/567751/2b07ee25b08930ba.png'),
+        loadImg('http://i2.muimg.com/567751/5eb8190d6b2a1c9c.png')
+      ]).then(showImgs)
+}
+</script>
+</html>

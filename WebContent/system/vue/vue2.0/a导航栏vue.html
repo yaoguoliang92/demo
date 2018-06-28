@@ -24,7 +24,7 @@
 }
 
 .displayblock{
-	/*display:none;*/	
+	display:none;
 	color:red;
 }
 		</style>
@@ -41,7 +41,7 @@
 			
 			<div v-for="(list1,key,index) of list" :class="{'displayblock':!!key}">
 				<div v-for="(items,key,index) of list1.div">
-					<h3>{{items.dt}}</h3>
+					<h3 @click="handleClick2(key)">{{items.dt}}</h3>
 					<h6 v-for="(item,key,index) of items.li">{{item._link}}</h6>
 				</div>
 			</div>
@@ -85,6 +85,10 @@
 			methods:{
 				handleClick:function(){
 					this.show = !this.show
+				},
+				handleClick2:function(a){
+					console.log(a);
+					this.list[0].div[a].li = "";
 				}
 			}
 		});

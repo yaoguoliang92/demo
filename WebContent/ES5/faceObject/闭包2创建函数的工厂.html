@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>闭包2</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+//创建函数的工厂
+function calFactory(base){
+	return function(max){
+		var total = 0;
+		for(var i=1;i<=max;i++){
+			total +=i;
+		}
+		return total + base;
+	}
+}
+var adder = calFactory(2);
+alert(adder(3));//max 是3    calFactory返回一个方法
+alert(adder(4));
+
+//以后有优化的写法
+/*(function(){
+	var m = 0;
+	function getM(){
+		return m;
+	}
+	function setM(val){
+		m=val;
+	}
+	window.g = getM;
+	window.f = setM;
+})();
+f(12);
+alert(g());*/
+</script>
+</html>

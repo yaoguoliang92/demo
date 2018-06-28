@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>类</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	//函数创建类
+	//只有函数才有prototype
+	function Person(){    //class   首字母大写规定
+		this.age = 22;
+		this.name = 'cs';
+	}
+	var p = new Person();
+	var p1 = new Person();
+	
+	Person.prototype.headCount = 1;
+	console.log(p.headCount);
+	console.log(p.constructor.prototype.headCount);
+	
+	console.log(p.__proto__.headCount);
+</script>
+</html>

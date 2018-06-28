@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>demo01</title>
+</head>
+<body>
+1.基础架构
+2.任务自动化gulp,看文档
+3.编译工具babel编译es6的,兼容性。webpack模块化的  	sass,less
+webpack-stream是对gulp支持
+4.代码实现
+
+安装node 
+以管理员身份打开窗口
+1、 使用npm uninstall -g express卸载express.
+2、使用npm install -g express指令重新安装express。 
+
+npm install -g express  
+npm install -g express-generator
+express --version
+
+
+1)
+//在server目录
+express -e .    //代表使用ejs模板引擎		//创建服务端环境
+npm install   //服务器构建好了
+回到构建目录 tasks
+创建util目录
+自动创建package.json   //有了这个我们就能npm找到依赖包了
+
+创建.babelrc文件    //自动编译的文件
+命令 touch .babelrc
+
+touch gulpfile.balel.js    //创建gulp文件
+
+day2
+gulp -production
+.option 作用是提取参数
+写args
+
+npm install1
+cnpm install gulp gulp-if gulp-concat webpack webpack-stream vinyl-named gulp-livereload gulp-plumber gulp-rename gulp-uglify gulp-util yargs --save-dev
+加一个参数 --save-dev  表示除了安装以外在package.json创建安装包依赖字段
+cnpm install gulp-live-server del gulp-util --save-dev
+cnpm install babel-loader babel-core babel-preset-env webpack --save-dev
+cnpm install require-dir --save-dev
+cnpm install babel-preset-es2015 --save-dev
+cnpm install gulp-sequence
+
+app.use(require('connect-livereload')()); 		//app.js中加这句
+npm install connect-livereload --save-dev     //自动化构建
+
+</body>
+<script>
+
+</script>
+</html>

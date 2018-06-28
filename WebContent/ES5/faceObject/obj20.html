@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>this</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+//function p(){
+//	this.name = '111';
+//}
+//var o = {};
+//
+//p.call(o);
+
+function Person(name,age){
+	this.name = name;
+	this.age = age;
+}
+
+var p1 = new Person("ch",11);
+
+
+function New(f){//f 是个函数， f 构造器函数
+	var o = {"__proto__":f.prototype};
+	return function(){
+//		o.name = arguments[0];
+//		o.age = arguments[1];
+		f.apply(o,arguments)//f的this指向o
+		
+		return o;
+	}
+}
+
+var p2 = New(Person)("xx",22);
+
+</script>
+</html>

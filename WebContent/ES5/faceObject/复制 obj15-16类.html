@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script src="../../jquery.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+var L = {};
+L.SeMarker={
+	name:1,
+	initialize:function () {
+        console.log(this.name);
+    }
+}
+L.Car = {
+	name:2,
+	initialize:function () {
+        L.SeMarker.initialize.call(this,this.name);
+    }
+}
+L.Car.initialize();
+
+
+var RequestDataManager = function (options) {
+    this.initialize(options);
+}
+
+RequestDataManager.prototype = {
+    options:{
+        //请求时间间隔
+        timeInterval:3000,
+        //延迟时间
+        delayTime:1000,
+        //主视角车载id
+        mainId:""
+    },
+    setMainId:function (id) {
+        this.options.mainId = id;
+    },
+    setOptions:function(options){
+        if(!options) return;
+        for(var key  in options)
+        {
+            this.options[key] = options[key];
+        }
+    },
+    initialize:function (options) {
+        this.setOptions(options);
+        this.isRealTime = true;
+        this.enable = true;
+        this.timerId  = null;
+        this.startTime = 0;
+        this.endTime = 0;
+        this.currentTime = 0;
+    }
+ }
+
+var requestDataManager = new RequestDataManager();
+
+console.dir(requestDataManager.options);
+
+function myfunc(data){
+	console.log(data.length);
+	if(!data || !data.length){
+		console.log(data);
+	};
+}
+myfunc(122);
+
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>dh</title>
+		<link rel="stylesheet" type="text/css" href="animate.css"/>
+		<script type="text/javascript" src="../js/jquery.js"></script>
+		<script src="velocity.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+<script type="text/javascript">
+//----------------------------animation的属性 ----------------------------------------- 
+//animation-name  规定需要绑定到选择器的 keyframe 名称。。
+//animation-duration	规定完成动画所花费的时间，以秒或毫秒计。
+//animation-timing-function	规定动画的速度曲线。
+//animation-delay 规定在动画开始之前的延迟。
+//animation-iteration-count	规定动画应该播放的次数。
+//animation-direction	规定是否应该轮流反向播放动画。
+</script>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.msg_one{
+			width:100px;
+			height:100px;
+			background: #ff0099;
+			opacity: 0.5;
+		}
+		@keyframes myfirst
+		{
+			from {transform:rotate(0deg);}
+			to {transform:rotate(360deg);}
+		}
+		.msg_one{
+			animation: myfirst 3s infinite linear;
+		}
+	</style>
+	<body>
+		<div class="gl_top_div">
+			<div class="msg_div msg_one">
+				one message
+			</div>
+		</div>
+		<button id="btn1">show1</button>
+	</body>
+
+</html>

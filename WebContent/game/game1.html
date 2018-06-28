@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="game1.css"/>
+	<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+	@media screen and (max-width: 767px){
+		.login_logo {
+		    width: 100%;
+		    height: 100px;
+		    background: #000;
+		}
+	}
+		.weui-grid {
+		    position: relative;
+		    float: left;
+		    padding: 20px 10px;
+		    width: 33.33333333%;
+		    box-sizing: border-box;
+		    border:1px solid #00FCFF;
+		    
+		    height:120px;
+	        font-size: 16px;
+		}
+		body{
+			width:100%;
+		}
+		.bg-black{
+			background: #00BFFF;
+			opacity: 0.5;
+		}
+	</style>
+	<body>
+		<div class='login_logo'>sdfsdf</div>
+		<div class='weui-grid we0'>1</div>
+		<div class='weui-grid we1'>2</div>
+		<div class='weui-grid we2'>3</div>
+		<div class='weui-grid we7'>8</div>
+		<div class='weui-grid sss' id="start" onclick="aa()">开始</div>
+		<div class='weui-grid we3'>4</div>
+		<div class='weui-grid we6'>7</div>
+		<div class='weui-grid we5'>6</div>
+		<div class='weui-grid we4'>5</div>
+
+		<!--<button onclick="stop()">button</button>-->
+	</body>
+	<script>
+		function aa(){
+			var num = Math.floor(Math.random()*1000+1000);
+			console.log(num)
+			Tool.timeonefunction(100);
+			setTimeout(stop,num);
+		}
+		function stop(){
+			console.log('stop');
+			Tool.endtime();
+			Tool.timeonefunction(500);
+			setTimeout(function(){
+				Tool.endtime();
+				console.log(Tool.obj.count);
+			},4000)
+		}
+		
+		var Tool = (function(){
+			var obj={};
+			var i=0,timeone;
+			function showlight(){
+				obj.count=i;
+				$('.weui-grid').removeClass('bg-black')
+				$('.we'+i).addClass('bg-black');
+				i++;
+				if(i==8){
+					i=0;
+				}
+			}
+			function timeonefunction(millisec){
+				timeone = setInterval(function(){
+					showlight();
+				},millisec)
+			}
+			function endtime(){
+				clearInterval(timeone);
+				
+			}
+			return {
+				showlight:showlight,
+				timeonefunction:timeonefunction,
+				endtime:endtime,
+				obj:obj
+			}
+		})()
+	</script>
+</html>

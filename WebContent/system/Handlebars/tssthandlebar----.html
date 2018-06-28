@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="lib/handlebars.min.js" type="text/javascript" charset="utf-8"></script>
+<body>
+</body>
+<div id="muban">
+	{{#each this}}
+		<h1>{{name}}</h1>
+		<div>{{home}}</div>
+		<div>{{job}}</div>
+	{{/each}}
+</div>
+    
+    <script>
+        var data =[{
+            name:'约翰莫里森',
+            home:'美国',
+            job:'摔跤手'
+        },
+        {
+            name:'Faker',
+            home:'韩国',
+            job:'英雄联盟职业选手'
+        }];
+        
+        var templete = $("#muban").html();
+        var hand = Handlebars.compile(templete);
+        var result = hand(data);
+        $("#muban").html(result);
+        
+    </script>
+</body>
+</html>

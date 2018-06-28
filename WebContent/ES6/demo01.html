@@ -10,5 +10,19 @@
 <script>
 const val = 213;//必须实例化
 let i;//for循环中用的多
+
+//跟var的区别
+//1.通过var定义的变量，作用域是整个封闭函数，是全域的 。通过let定义的变量，作用域是在块级或是子块中。
+//2.let不允许在相同作用域内，重复声明同一个变量。
+for (let i = 0; i < 10; i++) {
+}
+console.log(i);//undefine
+
+for (var j = 0; j < 10; j++) {
+}
+console.log(j);//10
+
+  let a = 10;
+  let a = 1;
 </script>
 </html>

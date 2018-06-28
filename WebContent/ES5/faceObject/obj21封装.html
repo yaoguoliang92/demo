@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>封装</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+function Person(name,age){
+//	私有的
+	var age = 100;
+	function pm(){
+		console.log("private methods");
+	}
+	this.name = name;
+//	公有的
+	this.test = function(){
+		console.log("public mthods");
+		pm.call(this);
+	}
+}
+
+//Person.useTools = true;
+//console.log(Person.useTools );
+
+function Person(pname){
+	function pm(){
+		console.log(self.name);
+	}
+	var self  = {
+		name:pname,
+		test:function(){
+			pm();
+		}
+	};
+	return self;
+}
+</script>
+</html>

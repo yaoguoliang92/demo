@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>闭包2</title>
+</head>
+<body>
+	<div id='1'>1</div>
+	<div id='2'>2</div>
+	<div id='3'>3</div>
+</body>
+<script type="text/javascript">
+for(var i=1;i<=3;i++){
+	var ele = document.getElementById(i);
+//	ele.onclick = function(){
+//		alert(i);
+//	}
+	ele.onclick = (function(i){
+		return function(){
+			alert(i);
+		}
+	})(i)
+}
+</script>
+</html>

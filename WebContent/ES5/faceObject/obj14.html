@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>创建两个对象</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	var o = {name:'cj',age:11};
+	var o1 = {name:'ss',age:121};
+	
+	//工厂函数，有缺点,只是包装代码，共享的东西没法搞
+	function PersonFactory(pname,page){
+		return {
+			name:pname,
+			age:page
+		}
+	}
+	var p1 = PersonFactory('cj',11);
+	var p2 = PersonFactory('ss',121);
+	
+	
+	
+</script>
+</html>

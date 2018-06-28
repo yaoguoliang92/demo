@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue3-6样式绑定02</title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="root">
+			<p @click="handleclick()">{{msg}}</p>
+			<input type="text" v-model="msg" />
+			<span v-model="msg"></span>
+			<todo :count="2"></todo>
+		</div>
+	</body>
+	<script type="text/javascript">
+	var todo = {
+		template:"<h2>{{count}}</h2>",
+		props:['count']
+	}
+	var vm = new Vue({
+		el:'#root',
+		components:{
+			todo:todo
+		},
+		data:{
+			msg:'i am vue',
+			num:1
+		},
+		methods:{
+			handleclick:function(){
+				this.msg = "changer"+this.num;
+				this.num +=1;
+			}
+		}
+	})
+	</script>
+</html>

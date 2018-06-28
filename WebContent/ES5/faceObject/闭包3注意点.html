@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>闭包2</title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+//function f(){
+//	var num =1;
+//	function g(){
+//		alert(num);
+//	}
+//	num++;
+//	g();
+//}
+//f();
+
+function f(){
+	var num =1;
+	return function(){
+		num++;
+		alert(num);
+	}
+}
+
+var result1 = f();
+result1();
+result1();
+var result2 = f();
+result2();
+result2();
+</script>
+</html>
