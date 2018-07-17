@@ -1,0 +1,243 @@
+码云  设置 ->ssh公钥
+
+git clone git——url
+
+git status
+git add .
+git commit -m 'project initialized'
+git push
+
+dev.env.js开发环境
+index.js基础配置信息
+prod.env.js线上环境
+
+问题：vue-cli构建的项目，eslint一直报CRLF/LF的linebreak错误
+解决：'linebreak-style': ["error", "windows"],
+
+
+6-4
+多页应用：首屏时间快，SEO效果好
+		缺点：页面切换慢
+单页应用：优点：页面切换快
+		缺点，首屏时间慢，百度查的慢排名靠后
+		
+
+1.<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+2.引入reset.css文件。
+3.引入border.css   //解决1多北平像素边框
+4.有的设备300毫秒延迟执行  解决方法：引入fastclick
+npm install fastclick --save
+
+5.iconfont
+github账号登录
+新建项目
+
+6.stylus
+安装 npm install stylus --save
+npm install stylus-loader --save
+使用
+<style lang="stylus" scoped>
+
+7.效果一样
+<home-header></home-header>
+<HomeHeader></HomeHeader>
+
+8.
+<style lang="stylus" scoped>
+</style>
+scoped不是全局css
+
+9.
+html {overflow-x: hidden;height: 100%;font-size: 50px;-webkit-tap-highlight-color: transparent;}
+rem 相对于50px;
+1rem = html font-size=50px;
+
+10.
+可以定义变量
+stylus
+varibles.styl文件
+在header.vue中用@import来引入
+~@代表src目录
+在webpack中配置
+注意前面加~
+
+11.
+
+@代表src 在webpack base中配置
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('src'),
+      'styles': resolve('src/assets/styles'),
+    }
+  },
+  
+12.git创建分支
+每开发一个功能就新建一个分支
+然后git checkout index-swiper  //切换到swiper分支
+	git status
+
+13.
+轮播插件
+github
+vue-awesome-swiper
+npm install vue-awesome-swiper@2.6.7 --save
+
+谷歌可修改网速fast3g
+图片抖动。在swiper外层加div标签。用padding-bottom 撑开
+.wrapper >>> .swiper-pagination-bullet-active
+  background :#ffffff !important
+.wrapper
+  overflow: hidden
+  width:100%
+  height:0
+  padding-bottom:31.25%
+  .swiperimg
+    width:100%;
+
+14.git合并
+git pull
+git checkout master				//回到主分支
+git merge origin/index-swiper	//把线上的index分支下载合并到本地的master	在主分支下载swiper分支到本地，之后再提交
+git push						//把本地的master分支提交
+
+15  7-4
+  .icons
+    margin-top: .1rem
+    .icon
+      position: relative
+      overflow: hidden
+      float: left
+      width: 25%
+      height: 0
+      padding-bottom: 25%
+      .icon-img
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: .44rem
+        box-sizing: border-box
+        padding: .1rem
+        .icon-img-content
+          display: block
+          margin: 0 auto
+          height: 100%
+      .icon-desc
+        position: absolute
+        left: 0
+        right: 0
+        bottom: 0
+        height: .44rem
+        line-height: .44rem
+        text-align: center
+        color: $darkTextColor
+        
+
+16   7-5图标区域逻辑实现
+
+17.  安装vue  devtools //浏览器
+极速安装Vue调试神器 vue.js devtools（5分钟搞定）
+https://blog.csdn.net/tel13259437538/article/details/79968977
+
+
+18. ...
+    overflow:hidden
+    white-space:nowrap
+    text-overflow:ellipsis
+    
+19。
+cnpm install axios --save
+
+axios
+发送请求
+
+整个首页发送一个ajax请求，在home.vue中发请求
+import axios from 'axios';
+mounted(){
+	this.getHomeInfo()
+}
+methods:{
+	getHomeInfo(){
+		axios.get('/api/index.json')
+		.then(this.getHomeInfoSucc)
+	},
+	getHomeInfoSucc(res){
+		console.log(res);
+	}
+}
+
+statis/mock新建文件夹
+添加static中的json文件，静态文件在static文件夹才能访问。
+在gitignore中添加static/mock路径
+
+配置index.js，api代表/static/mock
+webpack-dev-server提供的
+    proxyTable: {
+      '/api':{
+        target:'http://localhost:8080',
+        pathRewrite:{
+          '^/api':'/static/mock'
+        }
+      }
+    },
+    
+
+20.
+在getHomeInfoSucc()中把数据传给data
+
+data () {
+	return {
+		city:""
+	}
+}
+
+给子组件传值
+<home-header :city="city"></home-header>
+
+head.vue
+props:{
+	city:String
+}
+
+
+21.
+swiper问题，打开时显示第4个图片
+方案1在<swiper>中加v-if="list.length"
+方案2
+v-if="showSwiper"
+computed:{
+	showSwiper(){
+		return this.list.length;
+	}
+}
+
+--------------------------------------------------------------------------
+8-1
+city-router
+配置路由
+<router-link to='/city'>
+
+重要
+overflow:hidden  和  float:left   有清除浮动的效果，这样父元素没设置高度，就会被浮动的子元素撑开！！！！！！！！！！！！！
+
+8-4
+Better-scroll插件  滚动插件
+npm install better-scroll --save
+
+import BScroll from 'better-scroll';
+  mounted() {
+    this.scroll = new BScroll(this.$refs.wrapper);
+  },
+
+一般来讲，获取DOM元素，需document.querySelector（".input1"）获取这个dom节点，然后在获取input1的值。
+但是用ref绑定之后，我们就不需要在获取dom节点了，直接在上面的input上绑定input1，然后$refs里面调用就行。
+然后在javascript里面这样调用：this.$refs.input1  这样就可以减少获取dom节点的消耗了
+
+*字母表*、
+新建组件
+
+display:flex;
+flex-direction:column;
+justify-content:center;

@@ -42,5 +42,19 @@
 					}
 				}
 			});
+			var vm = new Vue({
+				el:'#root',
+				data:{
+					total:5
+				},
+				components:{
+					counter:counter
+				}
+				methods:{
+					incfunction:function(num){
+						this.total+=num;
+					}
+				}
+			})
 	</script>
 </html>
