@@ -1,0 +1,32 @@
+let setTarget = e.currentTarget.nextElementSibling
+let childLi = setTarget.children
+let nodeListArr = Array.prototype.slice.call(childLi)
+
+
+
+showMessagePane:function (msg) {
+    var that = this;
+    var pane = document.createElement("div");
+    pane.className = "message-item animated bounceInCenter";
+    var imgPane = document.createElement("div");
+    imgPane.className = "ms-img";
+    var img = document.createElement("img");
+    var imgUrl = this.getImgUrl(msg.code);
+    img.setAttribute("src",imgUrl);
+    imgPane.appendChild(img);
+    var textPane = document.createElement("div");
+    textPane.className = "ms-text";
+    textPane.innerHTML = msg.text;
+    pane.appendChild(imgPane);
+    pane.appendChild(textPane);
+    $(this._container).prepend(pane)
+    setTimeout(function () {
+        var aa = $(that._container).find(pane);
+        if(!aa || !aa.length) return;
+        aa.remove();
+        that.count--;
+        delete that.messages[msg.code];
+        that.showNextMessage();
+    },this.options.stayTime);
+    this.count++;
+},

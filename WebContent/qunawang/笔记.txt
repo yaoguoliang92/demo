@@ -241,3 +241,6 @@ import BScroll from 'better-scroll';
 display:flex;
 flex-direction:column;
 justify-content:center;
+
+
+Array.prototype.slice.call

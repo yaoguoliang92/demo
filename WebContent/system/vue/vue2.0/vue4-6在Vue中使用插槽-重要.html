@@ -9,17 +9,17 @@
 	<body>
 		<div id="root">
 			<child>
-				<div class='header' slot="header">header</div>
 				<div class='header' slot="footer">footer</div>
+				<div class='header' slot="header">header</div>
 			</child>
 		</div>
 	</body>
 		<script type="text/javascript">
 			Vue.component('child',{
 				template:`<div>
-							<slot name="footer">默认内容1</slot>
 							<div>content</div>
 							<slot name="header">默认内容</slot>
+							<slot name="footer">默认内容1</slot>
 						</div>`
 						
 			})
