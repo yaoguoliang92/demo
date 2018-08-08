@@ -7,10 +7,7 @@
 	</head>
 	<body>
 		<div id="root">
-			<p @click="handleclick()">{{msg}}</p>
-			<input type="text" v-model="msg" />
-			<span v-model="msg"></span>
-			<todo :count="2"></todo>
+			{{fullname}}
 		</div>
 	</body>
 	<script type="text/javascript">
@@ -20,17 +17,13 @@
 	}
 	var vm = new Vue({
 		el:'#root',
-		components:{
-			todo:todo
-		},
 		data:{
-			msg:'i am vue',
-			num:1
+			first:"li",
+			last:'hua',
 		},
-		methods:{
-			handleclick:function(){
-				this.msg = "changer"+this.num;
-				this.num +=1;
+		computed:{
+			fullname:function(){
+				return this.first+this.last
 			}
 		}
 	})

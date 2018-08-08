@@ -7,54 +7,42 @@
 	</head>
 	<body>
 		<div id="root">
-			<counter :count="2" @inc="incfunction"></counter><!--父组件给子组件传至，通过属性传值-->
-			<counter :count="3" ></counter>
+			<counter :counter="1" @incc="fu_func"></counter>
+			<counter :counter="2" @incc="fu_func"></counter>
 			
 			<div>{{total}}</div>
 		</div>
 	</body>
 	<script type="text/javascript">
-			var counter = {
-				props:['count'],
-				template:'<div @click="handlerclick">{{number}}</div>',
-				data:function(){
-					return {
-						number:this.count
-					}
-				},
-				methods:{
-					handlerclick:function(){
-						this.$emit('inc',2);
-					}
+		var counter = {
+			props:['counter'],
+			template:"<div @click='handlerclick'>{{number}}</div>",
+			data:function(){
+				return {
+					number:this.counter
+				}
+			},
+			methods:{
+				handlerclick:function(){
+					this.number+=1;
+					this.$emit('incc',2)
 				}
 			}
-			var vm = new Vue({
-				el:"#root",
-				components:{
-					counter:counter
-				},
-				data:{
-					total:5
-				},
-				methods:{
-					incfunction:function(num){
-						this.total +=num; 
-					}
+			
+		}
+		var app = new Vue({
+			el:"#root",
+			components:{
+				counter:counter
+			},
+			data:{
+				total:5
+			},
+			methods:{
+				fu_func:function(num){
+					this.total+=num;
 				}
-			});
-			var vm = new Vue({
-				el:'#root',
-				data:{
-					total:5
-				},
-				components:{
-					counter:counter
-				}
-				methods:{
-					incfunction:function(num){
-						this.total+=num;
-					}
-				}
-			})
+			}
+		})
 	</script>
 </html>
