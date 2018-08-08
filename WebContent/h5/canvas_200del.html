@@ -24,11 +24,11 @@
         //循环创建移动的点
         for( var i=0;i<amount;i++){
             arr.push({
-                x:rnd(0,oCanvas.width),
+                x:rnd(0,oCanvas.width),		//点的位置
                 y:rnd(0,oCanvas.height),
-                speedX:rndSign()*rnd(1,3)*0.5,
+                speedX:rndSign()*rnd(1,3)*0.5,//速度
                 speedY:rndSign()*rnd(1,3)*0.5,
-                r:rnd(1,4)                    
+                r:rnd(1,4)                    //点半径
             })    
         }
         setInterval(function(){
@@ -58,28 +58,28 @@
                     dot.speedY*=-1    
                 }
             })    
-    //
-    arr.forEach(function(dot,index){
-        for(let i=index;i<arr.length;i++){
-            //求出两点之间距离，用于判断是否连线
-            var distance = Math.sqrt(
-            Math.pow(dot.x - arr[i].x,2)+
-            Math.pow(dot.y - arr[i].y,2)
-        )    
-        
-        //判断什么时候连线
-            if(distance<range){
-                ctx.beginPath();
-                ctx.moveTo(dot.x,dot.y);
-                ctx.lineTo(arr[i].x,arr[i].y);
-                ctx.strokeStyle=`rgba(141,134,32,${1-distance/range})`;
-                ctx.stroke();    
-            }
-        }    
-    });
+		    //
+		    arr.forEach(function(dot,index){
+		        for(let i=index;i<arr.length;i++){
+		            //求出两点之间距离，用于判断是否连线
+		            var distance = Math.sqrt(
+		            Math.pow(dot.x - arr[i].x,2)+
+		            Math.pow(dot.y - arr[i].y,2)
+			        )    
+			        
+			        //判断什么时候连线
+		            if(distance<range){
+		                ctx.beginPath();
+		                ctx.moveTo(dot.x,dot.y);
+		                ctx.lineTo(arr[i].x,arr[i].y);
+		                ctx.strokeStyle=`rgba(141,134,32,${1-distance/range})`;
+		                ctx.stroke();    
+		            }
+		        }    
+		    });
         },16);
         //当鼠标移动上去点跟着走
-        document.onmousemove=function({clientX,clientY}){      
+        document.onmousemove=function({clientX,clientY}){    
             //判断第一次移上去
             if(first){
                 first=false;
@@ -96,11 +96,11 @@
             }
         }
         //随机函数
-        function rnd(n,m){
+        function rnd(n,m){//n-m之间的数
             return parseInt(Math.random()*(m-n)+n)
         }
         //解决点移动方向函数
-        function rndSign(){
+        function rndSign(){//正负
             return Math.random() > 0.5 ? 1 : -1;
         }
     </script>

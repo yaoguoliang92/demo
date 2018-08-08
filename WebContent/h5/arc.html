@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+        body{
+            background-color: #182327;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="1300" height="800"></canvas>
+    <script>
+        var oCanvas=document.querySelector('canvas')
+        var ctx=oCanvas.getContext('2d')
+        ctx.fillStyle='rgb(141,134,32)';
+        var xy ={x:100,y:200,speedX:1,speedY:1};
+        setInterval(function(){
+        	ctx.clearRect(0,0,oCanvas.width,oCanvas.height);
+
+        	ctx.beginPath();
+        	ctx.arc(xy.x,xy.y,30,0,2*Math.PI,false);
+        	ctx.fill();
+        	
+        	xy.x+=xy.speedX;
+        	xy.y+=xy.speedY;
+        	
+        	console.log(xy.x+":"+xy.y);
+
+            if(xy.x<0||xy.x>oCanvas.width){
+                xy.speedX*=-1    
+            }
+            
+            if(xy.y<0||xy.y>oCanvas.height){
+                xy.speedY*=-1    
+            }
+        	
+        },16)
+        
+        function rnd(n,m){
+            return parseInt(Math.random()*(m-n)+n)
+        }
+        //解决点移动方向函数
+        function rndSign(){
+            return Math.random() > 0.5 ? 1 : -1;
+        }
+    </script>
+</body>
+</html>

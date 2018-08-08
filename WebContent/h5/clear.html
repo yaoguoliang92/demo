@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		总结以下三种清空canvas画布的方式：
+
+1. 最简单的方法：由于canvas每当高度或宽度被重设时，画布内容就会被清空，因此可以用以下方法清空：
+
+
+function clearCanvas<span style="font-family: Verdana, Arial, 宋体;">()</span>
+{
+    var c=document.getElementById("myCanvas");
+    var cxt=c.getContext("2d");
+    c.height=c.height;
+}
+
+2. 使用clearRect方法：
+
+function clearCanvas()
+{
+	var c=document.getElementById("myCanvas");
+	var cxt=c.getContext("2d");
+	cxt.clearRect(0,0,c.width,c.height);
+}
+3. 类似于方法2，可以用某一特定颜色填充画布，从而达到清空的目的：
+
+
+function clearCanvas()
+{
+	var c=document.getElementById("myCanvas");
+	var cxt=c.getContext("2d");
+	
+	cxt.fillStyle="#000000";
+	cxt.beginPath();
+	cxt.fillRect(0,0,c.width,c.height);
+	cxt.closePath();
+}
+
+	</script>
+</html>
