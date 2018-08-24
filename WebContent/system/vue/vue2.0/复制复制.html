@@ -5,27 +5,14 @@
 		<title>vue3-6样式绑定02</title>
 		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
 	</head>
+	<style type="text/css">
+	</style>
 	<body>
 		<div id="root">
-			{{fullname}}
+			<span :style="styleobj"></span>
 		</div>
 	</body>
 	<script type="text/javascript">
-	var todo = {
-		template:"<h2>{{count}}</h2>",
-		props:['count']
-	}
-	var vm = new Vue({
-		el:'#root',
-		data:{
-			first:"li",
-			last:'hua',
-		},
-		computed:{
-			fullname:function(){
-				return this.first+this.last
-			}
-		}
-	})
+		
 	</script>
 </html>
