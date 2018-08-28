@@ -1,7 +1,8 @@
+#实验
 def strStr(aaa,bbb):
     for x in range(len(aaa)):
-        print x,aaa[x]
-    print len(aaa)
+        print(x,aaa[x])
+    print(len(aaa)) 
     
 strStr('acaa','aa')  
 
