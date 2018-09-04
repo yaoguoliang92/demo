@@ -1,20 +1,36 @@
-def redfile(filedir):
-	file = open(filedir)
-	for x in file:
-		print(x[:3])
-		print(x[3:])
-		if x[:3]=='客服：':
-			savefile('kf',x[3:])
-		elif x[:3]=='甲鱼：':
-			savefile('jy',x[3:])	
-	file.close()
-def savefile(str,line):
-	boy_file=open('D:/jy.txt','a')
-	girl_file=open('D:/kf.txt','a')
-	if str=='kf':
-		boy_file.writelines(line)
-	else:
-		girl_file.writelines(line)
-	boy_file.close()
-	girl_file.close()
-redfile('D:/test.txt')	
+def readFile(filename):
+    boy = []
+    gril = []
+    count = 1
+    f = open(filename)
+    for each_line in f:
+        if each_line[:6] != "======":
+            (role, spoken_line) = each_line.split(":", 1)
+            if role == "小甲鱼":
+                boy.append(spoken_line)
+            elif role == "小客服":
+                gril.append(spoken_line)
+        else:
+            saveFile(count, boy, gril)
+
+            boy = []
+            gril = []
+            count += 1
+    saveFile(count, boy, gril)
+    f.close()
+
+# 用于创建文件进行保存
+def saveFile(count, boy, gril):
+    file_boy_name = 'boy' + str(count) + '.txt'
+    file_gril_name = 'gril' + str(count) + '.txt'
+
+    boy_file = open(file_boy_name, 'w')
+    gril_file = open(file_gril_name, 'w')
+
+    boy_file.writelines(boy)
+    gril_file.writelines(gril)
+
+    boy_file.close()
+    gril_file.close()
+
+readFile('report.txt')
